@@ -1,4 +1,10 @@
-# groupprojectone
+# Group Project 1
 GT Bootcamp Group Project #1
 
-## 11/29/22 we have a meeting at 12:00 pm eastern to set up our branches and come up with a plan!
+## Group Members
+<ul>
+  <li>Bryan Pike</li>
+</ul>
+
+## Upcoming Meetings
+11/29/22 we have a meeting at 12:00 pm eastern to set up our branches and come up with a plan!
