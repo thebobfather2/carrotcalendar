@@ -6,6 +6,7 @@ GT Bootcamp Group Project #1
   <li>Bryan Pike</li>
   <li>Larissa Guilherme</li>
   <li>Sarah Jacobs</li>
+  <li>4th</li>
 </ul>
 
 ## Upcoming Meetings
