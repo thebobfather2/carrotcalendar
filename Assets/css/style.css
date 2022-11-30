@@ -1,0 +1,34 @@
+:root {
+    --dark-shades: #080603;
+    --dark-accent: #EC4803;
+    --main-brand: #F87309;
+    --light-accent: #FD9531;
+    --light-shades: #F8F4EC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    display: inline-flex;
+    background-color: var(--light-shades);
+    margin-bottom: 30px;
+}
+
+img {
+    width: 170px;
+    height: 170px;
+    border-radius: 30px;
+}
+
+h1 {
+    margin-top: 60px;
+    margin-left: 445px;
+    font-size: 70px;
+    letter-spacing: 0.3rem;
+    color: var(--main-brand);
+}
+

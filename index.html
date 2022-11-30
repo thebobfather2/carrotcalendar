@@ -5,25 +5,137 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- style sheets go here?
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> 
-    -->
-
-  <link rel="stylesheet" href="./Assets/css/style.css" />
-  <title>Group Project 1</title>
+  <!-- Boostrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="" rel="stylesheet"> <!-- TODO: Choose a font -->
+  <!-- Our CSS file -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title> Carrot - Event Calendar </title>
 </head>
+
+<body>
+  <!-- Header -->
+  <header class="hero">
+    <nav class="navbar">
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/carrot.png" alt="Logo" class="d-inline-flex align-text-top">
+      </a>
+      <h1 class="jumbotron text-center">Carrot</h1>
+    </nav>
+  </header>
+  <!-- Calendar -->
+  <main>
+    <!-- TODO: Create function to iterate and create a certain amount of divs depending on the month ? 28/29/30/31 days? -->
+    <div id="calendar-container" class="container-fluid my-4">
+      <div id="calendar" class="card">
+        <!-- TODO: Add buttons to change month? -->
+        <div id="calendar-header" class="card-header">
+          <!-- TODO: name of the current month -->
+          December
+        </div>
+        <div id="calendar-events" class="card-body">
+          <table class="table table-striped-columns">
+            <thead>
+              <!-- Week day -->
+              <tr>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thursday</th>
+                <th scope="col">Friday</th>
+                <th scope="col">Saturday</th>
+                <th scope="col">Sunday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- TODO: Should we add button inside the input to save the event or onclick - show modal with button like an alert (example on line 110) -->
+              <tr>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">1</button></td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+              </tr>
+              <tr>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+              </tr>
+              <tr>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" arial-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">December</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input type="text" class="form-control" placeholder="Some quick example."></input>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
 
 <!-- STARTER CODE PULLED FROM PREVIOUS EXAMPLE
 
 <body class="flex-column min-100-vh">
-  <header class="hero">
-    <h1 class="app-title"><i class="fab fa-github"></i> Git it Done!</h1>
-    <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have!
-    </p>
-  </header>
-
 
   <main class="flex-row justify-space-between">
     <div class="col-12 col-md-4">
@@ -54,7 +166,7 @@
   </main> 
 -->
 
-  <script src="./Assets/js/script.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 
 </html>
