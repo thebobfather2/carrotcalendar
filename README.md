@@ -7,6 +7,7 @@ GT Bootcamp Group Project #1
   <li>Larissa Guilherme</li>
   <li>Sarah Jacobs</li>
   <li>Anastasia Markova</li>
+  <li>Uriel Avina</li>
 </ul>
 
 ## Upcoming Meetings
