@@ -26,9 +26,13 @@ img {
 
 h1 {
     margin-top: 60px;
-    margin-left: 445px;
+    margin-left: 340px;
     font-size: 70px;
     letter-spacing: 0.3rem;
     color: var(--main-brand);
+}
+
+td {
+    height: 100px;
 }
 
