@@ -1,3 +1,61 @@
+// // Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+// // Your web app's Firebase configuration
+// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
+//   authDomain: "carrot-calendar-8c002.firebaseapp.com",
+//   databaseURL: "https://carrot-calendar-8c002-default-rtdb.firebaseio.com",
+//   projectId: "carrot-calendar-8c002",
+//   storageBucket: "carrot-calendar-8c002.appspot.com",
+//   messagingSenderId: "527726326014",
+//   appId: "1:527726326014:web:5814bc2f647cc92443b5af",
+//   measurementId: "G-CLP0HKCDK1"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
+import firebase from "firebase/app";
+import "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+const auth = getAuth(firebaseApp);
+onAuthStateChanged(auth, user => {
+  // Check for user status
+});
+
+//require firebase for server side storage
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+
+//See: https://firebase.google.com/docs/web/learn-more#config-object
+const firebaseConfig = {
+  apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
+  authDomain: "carrot-calendar-8c002.firebaseapp.com",
+  databaseURL: "https://carrot-calendar-8c002-default-rtdb.firebaseio.com",
+  projectId: "carrot-calendar-8c002",
+  storageBucket: "carrot-calendar-8c002.appspot.com",
+  messagingSenderId: "527726326014",
+  appId: "1:527726326014:web:5814bc2f647cc92443b5af",
+  measurementId: "G-CLP0HKCDK1"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = firebase.firestore();
+
+
 // Constant Declaration.
 const first = 1;
 const second = 5;
