@@ -13,100 +13,40 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="" rel="stylesheet"> <!-- TODO: Choose a font -->
+  <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
   <!-- Our CSS file -->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title> Carrot - Event Calendar </title>
 </head>
 
 <body>
-  <!-- Header -->
   <header class="hero">
     <nav class="navbar">
-      <a class="navbar-brand" href="#">
-        <img src="assets/images/carrot.png" alt="Logo" class="d-inline-flex align-text-top">
-      </a>
+      <img src="assets/images/carrot.png" alt="Logo" class="d-inline-flex align-text-top">
       <h1 class="jumbotron text-center">Carrot</h1>
     </nav>
   </header>
-  <!-- Calendar -->
   <main>
-    <!-- TODO: Create function to iterate and create a certain amount of divs depending on the month ? 28/29/30/31 days? -->
-    <div id="calendar-container" class="container-fluid my-4">
+    <!-- TODO: Add option to translate the page? -->
+    <div id="calendar-container" class="container-fluid my-3">
       <div id="calendar" class="card">
-        <!-- TODO: Add buttons to change month? -->
-        <div id="calendar-header" class="card-header">
-          <!-- TODO: name of the current month -->
-          December
-        </div>
+        <!-- TODO: Add buttons to change month? Add option to change the view (monthly/weekly)?-->
+        <div id="calendar-header" class="card-header"></div>
         <div id="calendar-events" class="card-body">
           <table class="table table-striped-columns">
-            <thead>
-              <!-- Week day -->
-              <tr>
-                <th scope="col">Monday</th>
-                <th scope="col">Tuesday</th>
-                <th scope="col">Wednesday</th>
-                <th scope="col">Thursday</th>
-                <th scope="col">Friday</th>
-                <th scope="col">Saturday</th>
-                <th scope="col">Sunday</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- TODO: Should we add button inside the input to save the event or onclick - show modal with button like an alert (example on line 110) -->
-              <tr>
-                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">1</button></td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-              </tr>
-              <tr>
-                <td>15</td>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-              </tr>
-              <tr>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-              </tr>
-              <tr>
-                <td>29</td>
-                <td>30</td>
-                <td>31</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+            <thead id="week-day"></thead>
+            <tbody id="week-row">
+              <tr id="week-1"></tr>
+              <tr id="week-2"></tr>
+              <tr id="week-3"></tr>
+              <tr id="week-4"></tr>
+              <tr id="week-5"></tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
+    <!-- TODO: Add a drop down to choose the time of the event -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" arial-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -128,45 +68,26 @@
     </div>
 
   </main>
+
+  <footer>
+    <p> Made with &#129365 by Rabbits </p>
+  </footer>
+
+  <!-- Boostrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
-</body>
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Day.js is a minified version of Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"
+    integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- My JavaScript file -->
+  <script src="./assets/js/script.js"></script>
 
-<!-- STARTER CODE PULLED FROM PREVIOUS EXAMPLE
-
-<body class="flex-column min-100-vh">
-
-  <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
-
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
-        <form id="user-form" class="card-body">
-          <label class="form-label" for="username">Username</label>
-          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn">Get User</button>
-        </form>
-      </div>
-
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search By Topic</h3>
-        <div id="language-buttons" class="card-body">
-          <button data-language="javascript" class="btn">JavaScript</button>
-          <button data-language="html" class="btn">HTML</button>
-          <button data-language="css" class="btn">CSS</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-8">
-      <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
-      <div id="repos-container" class="list-group"></div>
-    </div>
-  </main> 
--->
-
-<script src="./assets/js/script.js"></script>
 </body>
 
 </html>
