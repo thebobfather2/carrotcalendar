@@ -1,73 +1,59 @@
 :root {
     --dark-shades: #080603;
     --dark-accent: #EC4803;
-    --main-brand: #F87309;
-    --light-accent: #FD9531;
+    --main-brand: #F37335;
+    --light-accent: #FDC830;
     --light-shades: #F8F4EC;
-}
-
-* {
-    margin: 0;
-    padding: 0;
+    --gradient: linear-gradient(to right, var(--main-brand), var(--light-accent), var(--dark-accent));
 }
 
 body {
-	min-height: 100vh;
-	min-width: 100%;
-	 background: #FDC830;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #F37335, #FDC830,#a83d08);  
-	background: linear-gradient(to right, #F37335, #FDC830,#ff6214); 
-	animation: gradient 10s ease infinite;
-	background-size: 400% 400%;  
+    background: #FDC830;
+    /* fallback for old browsers */
+    background: var(--gradient);
+    animation: gradient 10s ease infinite;
+    background-size: 400% 400%;
 }
 
 header {
-    width: 100%;
-    height: 22vh;
     display: inline-flex;
-    margin-bottom: 30px;
 }
 
 img {
     width: 250px;
     height: 250px;
-    border-radius: 30px;
 }
 
 h1 {
-    font-weight: 900;
-    margin-top: 50px;
-    margin-left: 255px;
+    margin-top: 140px;
     font-size: 70px;
-    letter-spacing: 0.3rem;
-    color: #ffffff;
-    text-shadow: 4px 4px #5c5c5c4d;
+    font-weight: 900;
+    text-shadow: 6px 8px var(--main-brand);
+    letter-spacing: 0.4rem;
+}
+
+h1,
+#calendar-header,
+#week-day,
+footer p {
+    font-family: 'Eagle Lake', cursive;
 }
 
 h1,
 footer p {
-    color: white;
-    font-family: 'Eagle Lake', cursive;
+    color: var(--light-shades);
 }
 
-#calendar-container {
-    margin: 10px auto;
-}
-
-footer p {
-    text-shadow: 1px 1px #000000;
-    color: white;
-    text-align: center;
+#calendar {
+    margin: 10px;
+    box-shadow: 0 8px 14px 8px var(--dark-accent);
 }
 
 #calendar-header {
+    margin-top: 10px;
     font-size: 40px;
-    font-weight: 700;
     text-align: center;
     letter-spacing: 0.2rem;
-}
-
-i {
     color: var(--dark-accent);
 }
 
@@ -75,25 +61,35 @@ td {
     position: relative;
     top: 0;
     right: 0;
-    height: 100px;
+    height: 110px;
+}
+
+.input {
+    margin: 2px 6px 6px 6px;
+    padding: 10px;
 }
 
 .input,
-#saveBtn {
+#save-button {
     outline: none;
     border: none;
     background: transparent;
 }
 
-.input {
-    margin-left: 6px;
+#save-button  {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    padding: 5px;
 }
 
-#saveBtn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
-    margin-right: 8px;
-    padding: 7px;
+footer {
+    margin-top: 50px;
+}
+
+footer p {
+    text-shadow: 1px 1px #000000;
+    text-align: center;
+    color: white;
 }

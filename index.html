@@ -23,50 +23,13 @@
   <header class="hero">
     <nav class="navbar">
       <img src="assets/images/carrot.png" alt="Logo" class="d-inline-flex align-text-top">
-      <h1 class="jumbotron text-center">Carrot</h1>
     </nav>
+    <h1>Carrot</h1>
   </header>
+
   <main>
     <!-- TODO: Add option to translate the page? -->
-    <div id="calendar-container" class="container-fluid my-3">
-      <div id="calendar" class="card">
-        <!-- TODO: Add buttons to change month? Add option to change the view (monthly/weekly)?-->
-        <div id="calendar-header" class="card-header"></div>
-        <div id="calendar-events" class="card-body">
-          <table class="table table-striped-columns">
-            <thead id="week-day"></thead>
-            <tbody id="week-row">
-              <tr id="week-1"></tr>
-              <tr id="week-2"></tr>
-              <tr id="week-3"></tr>
-              <tr id="week-4"></tr>
-              <tr id="week-5"></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <!-- TODO: Add a drop down to choose the time of the event -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" arial-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLabel">December</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <input type="text" class="form-control" placeholder="Some quick example."></input>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <div id="calendar" class="card my-3"></div>
   </main>
 
   <footer>
@@ -85,7 +48,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"
     integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- My JavaScript file -->
+  <!-- Our JavaScript file -->
   <script src="./assets/js/script.js"></script>
 
 </body>
