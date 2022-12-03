@@ -65,6 +65,11 @@ td {
     max-width: 110px;
 }
 
+.btnEvent {
+    float: right;
+    margin-right: 50px;
+}
+
 .input {
     margin: 2px 6px 6px 6px;
     padding: 10px;
