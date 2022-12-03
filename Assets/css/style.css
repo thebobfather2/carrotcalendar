@@ -62,6 +62,7 @@ td {
     top: 0;
     right: 0;
     height: 110px;
+    max-width: 110px;
 }
 
 .input {
