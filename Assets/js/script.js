@@ -1,9 +1,24 @@
-// Constant Declaration.
+// Constant and Variable Declaration.
 const first = 1;
 const second = 5;
 const third = 12;
 const fourth = 19;
 const fifth = 26;
+var today = dayjs().format('D');
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
+    authDomain: "carrot-project-48376.firebaseapp.com",
+    databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
+    projectId: "carrot-project-48376",
+    storageBucket: "carrot-project-48376.appspot.com",
+    messagingSenderId: "984637850330",
+    appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
+    measurementId: "G-TY6PHL9QTL"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 // Shorthand for $(document).ready(function ()).
 $(function () {
@@ -62,6 +77,30 @@ $(function () {
     renderWeek3();
     renderWeek4();
     renderWeek5();
+    // renderEvents();
+
+
+    // Added event listener to the date container.
+    $(".td-date").click(function (event) {
+        var target = $(event.target);
+        if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
+            var dateId = $(this).find("input").attr("id"); // Gets the date.
+            var eventId = $(this).find("input").val(); // Gets the user input.
+            if (eventId !== "") { // Conditional statement to ensure that it will only be stored on click if the textarea is not empty.
+                var rabbit = $("<span>");
+                rabbit.html("&#128007");
+                $(this).find("button").append(rabbit); // Adds a rabbit next to the carrot onclick.
+
+                // Add events to database.
+                firebase.database().ref("/date-event/" + dateId).push({
+                    date: dateId,
+                    events: eventId,
+                    purpose: "Add event to calendar"
+                });
+            }
+        }
+    }
+    )
 }
 );
 
@@ -76,22 +115,19 @@ function renderWeek1() {
         var dayId = valueId - 3; // The dayId that will be displayed needs to start at 1, but the date value is 4 (Thursday).
 
         // Since December starts on a Thursday, the first 3 containers must be empty.
-        if (valueId < 4) {
-            day.text("");
-        }
-
-        else {
+        if (valueId >= 4) {
             day.text(dayId);
 
             // Creates inputs.
             var inputEl = $('<input>');
+            inputEl.attr("id", dayId);
             inputEl.attr('type', 'text');
             inputEl.addClass("input")
 
             // Creates button to store the user's input.
             var buttonEl = $("<button>");
             buttonEl.attr('id', 'save-button');
-            buttonEl.attr('type', 'button');
+            buttonEl.attr('type', 'submit');
             buttonEl.html("&#129365"); // Carrot's unicode.
 
             day.append(inputEl);
@@ -112,12 +148,13 @@ function renderWeek2() {
         day.text(`${date}`);
 
         var inputEl = $('<input>');
+        inputEl.attr("id", date);
         inputEl.attr('type', 'text');
         inputEl.addClass("input")
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
-        buttonEl.attr('type', 'button');
+        buttonEl.attr('type', 'submit');
         buttonEl.html("&#129365");
 
 
@@ -136,12 +173,13 @@ function renderWeek3() {
         day.text(`${date}`);
 
         var inputEl = $('<input>');
+        inputEl.attr("id", date);
         inputEl.attr('type', 'text');
         inputEl.addClass("input")
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
-        buttonEl.attr('type', 'button');
+        buttonEl.attr('type', 'submit');
         buttonEl.html("&#129365");
 
 
@@ -160,12 +198,13 @@ function renderWeek4() {
         day.text(`${date}`);
 
         var inputEl = $('<input>');
+        inputEl.attr("id", date);
         inputEl.attr('type', 'text');
         inputEl.addClass("input")
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
-        buttonEl.attr('type', 'button');
+        buttonEl.attr('type', 'submit');
         buttonEl.html("&#129365");
 
 
@@ -184,19 +223,17 @@ function renderWeek5() {
 
         // TODO: Add function to check the week day
         // If it is the last container (32), it only creates an empty string.
-        if (date >= 32) {
-            day.text("");
-        }
-        else {
+        if (date < 32) {
             day.text(`${date}`);
 
             var inputEl = $('<input>');
+            inputEl.attr("id", date);
             inputEl.attr('type', 'text');
             inputEl.addClass("input")
 
             var buttonEl = $("<button>");
             buttonEl.attr('id', 'save-button');
-            buttonEl.attr('type', 'button');
+            buttonEl.attr('type', 'submit');
             buttonEl.html("&#129365");
 
 
@@ -208,19 +245,13 @@ function renderWeek5() {
     }
 };
 
-// Added event listener to the button.
-$(".save-button").click(function (event) {
-    var target = $(event.target); 
-    console.log(target) // Targets the click.
-    if (target.is('button')) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
-        var dayId = $(this).parent(".td-date").attr('id'); // Gets the date.
-        var eventId = $(this).find(".input").val(); // Gets the user input.
-        if (eventId !== "") { // Conditional statement to ensure that it will only be stored on click if the textarea is not empty.
-            // TODO: Add server storage.
-            localStorage.setItem(dayId, eventId);
-        }
-    }
-}
-)
-
 // TODO: Function to display the storage whenever the user loads the page.
+// function renderEvents() {
+//     var dateId = $(".input").attr("id"); // Gets the user input.
+//     dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
+//         var data = snapshot.val();
+//         console.log(data);
+//         var eventVal = data["events"];
+//         console.log(eventVal);
+//     }))
+// };
