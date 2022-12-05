@@ -245,6 +245,30 @@ function renderWeek5() {
     }
 };
 
+let timeForTheEvent = [];
+console.log(time);
+const addTime = (ev) => {
+    ev.preventDefault(); // To stop submitting
+    let time = {
+        id: Time.now(),
+        time: document.getElementById('time').value,
+        text: document.getElementById('text').value,
+        submit: document.getElementById('submit').value,
+    }
+    timeForTheEvent.push(time);
+    document.querySelector('form').reset(); // To clear the form for the next customers
+
+    // For display purposes only
+    // console.warn('added', { timeForTheEvent });
+    // let pre = document.querySelector('#msg pre');
+    // pre.textContent = '\n' + JSON.stringify(timeForTheEvent, '\t', 2);
+
+    // Saving to localStorage
+    localStorage.setItem('Time List', JSON.stringify(timeForTheEvent));
+}
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btn').addEventListener('click', addTime)
+});
 
 
 
