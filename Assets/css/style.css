@@ -119,33 +119,6 @@ footer p {
 }
 
 
-/* #list-items {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 185px;
-} */
-
-/* #list-items a {
-    display: block;
-    font-size: 18px;
-    background-color: #ddd;
-    color: black;
-    text-decoration: none;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    border-bottom: 1 px solid rgba (0, 0, 0, 2.);
-}
-
-#list-items a:hover {
-    background: lightgray;
-} */
-
-/* #time-input {
-    width: 25%;
-} */
-
 .time-form {
     display: flex;
     justify-content: flex-end;
