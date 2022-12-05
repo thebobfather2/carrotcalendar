@@ -104,10 +104,7 @@ footer p {
     color: white;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+
 
 .button {
     position: relative;
@@ -122,14 +119,14 @@ footer p {
 }
 
 
-#list-items {
+/* #list-items {
     display: none;
     position: absolute;
     background-color: white;
     min-width: 185px;
-}
+} */
 
-#list-items a {
+/* #list-items a {
     display: block;
     font-size: 18px;
     background-color: #ddd;
@@ -143,4 +140,15 @@ footer p {
 
 #list-items a:hover {
     background: lightgray;
+} */
+
+/* #time-input {
+    width: 25%;
+} */
+
+.time-form {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    align-items: center;
 }
