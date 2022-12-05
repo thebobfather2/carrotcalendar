@@ -20,8 +20,9 @@ header {
 }
 
 img {
-    width: 250px;
-    height: 250px;
+    margin: 10px 0 2px 20px;
+    width: 230px;
+    height: 230px;
 }
 
 h1 {
@@ -65,9 +66,8 @@ td {
     max-width: 110px;
 }
 
-.btnEvent {
-    float: right;
-    margin-right: 50px;
+td p {
+    color: var(--dark-accent);
 }
 
 .input {
