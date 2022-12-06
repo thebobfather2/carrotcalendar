@@ -42,7 +42,7 @@ The following gif shows the web application's appearance and functionality:
 
 ## Links
 
-🔗 [Bobby's Rabbits](https://www.bobbyrabbits.com/)
+🔗 [Bobby Rabbits](https://www.bobbyrabbits.com/)
 
 ## License
 
@@ -55,7 +55,7 @@ Please refer to the [LICENSE](https://choosealicense.com/licenses/mit/) in the r
 
 ## User Story
 
-AS Bobby's Rabbits
+AS A Member Of Bobby Rabbits
 I WANT a calendar that fits company branding which will allow user interaction
 SO THAT our users can create and RSVP for events
 
