@@ -1,9 +1,9 @@
 
 # Carrot
 ## Description
-Keeping up with Bobby's Rabbits events has never been easier!
+Keeping up with Bobby Rabbits' events has never been easier!
 
-Our new calendar is the perfect tool for connecting players around the world, no matter where they're located or what language they speak. With **Carrot**, you can change the calendar time zone to know what time an event will take place for your friends. You can also easily switch between languages to view events in your native tongue.
+Our new calendar is the perfect tool for connecting community memebers from around the world, no matter where they're located or what language they speak. With **Carrot**, you can change the calendar time zone to know what time an event will take place for your friends. You can also easily switch between languages to view events in your native tongue.
 
 ## Installation
 
