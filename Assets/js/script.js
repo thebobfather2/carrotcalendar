@@ -151,8 +151,6 @@ function renderWeek1() {
             day.append(inputEl);
             day.append(buttonEl);
         }
-        console.log("++++++++"); 
-        console.log(day)
 
         $("#week-1").append(day); // Appends first week row content.
     }
@@ -286,10 +284,15 @@ const addTime = (ev) => {
     // Saving to localStorage
     localStorage.setItem('Time List', JSON.stringify(timeForTheEvent));
 }
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btn').addEventListener('click', addTime)
-});
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     document.getElementById('btn').addEventListener('click', addTime)
+// });
+
+$(document).on('click','#btn',function(){
+    console.log(addTime)
+    // document.getElementById('btn').addEventListener('click', addTime)
+    });
 
 
 
