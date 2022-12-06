@@ -9,6 +9,7 @@ var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
 var year = dayjs().format("YYYY");
 var currentMonth = dayjs().format('MMMM');
 
+//LARISSA'S DATABASE CONFIG
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
 //     authDomain: "carrot-project-48376.firebaseapp.com",
@@ -20,6 +21,7 @@ var currentMonth = dayjs().format('MMMM');
 //     measurementId: "G-TY6PHL9QTL"
 // };
 
+// Bryan's Database Config
 const firebaseConfig = {
     apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
     authDomain: "carrot-calendar-8c002.firebaseapp.com",
@@ -28,7 +30,8 @@ const firebaseConfig = {
     storageBucket: "carrot-calendar-8c002.appspot.com",
     messagingSenderId: "527726326014",
     appId: "1:527726326014:web:5814bc2f647cc92443b5af",
-    measurementId: "G-CLP0HKCDK1"
+    measurementId: "G-CLP0HKCDK1",
+    cors: false
   };
 
 // Initialize Firebase
