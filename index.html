@@ -28,13 +28,30 @@
   </header>
 
   <main>
+    <div class="time-form">
+      <div class="form-floating">
+        <input type="time" class="form-control time-input" id="time">
+        <label for="time">Time for the event</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control time-input" id="text">
+        <label for="text">Text</label>
+      </div>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+      </div>
     <!-- TODO: Add option to translate the page? -->
     <div id="calendar" class="card my-3"></div>
+    <div class="timezone" id="timezone">
+
+      <h3>EST: 8:00PM</h3>
+    </div>
   </main>
 
   <footer>
     <p> Made with &#129365 by Rabbits </p>
   </footer>
+
   <!--Firebase-->
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
@@ -53,7 +70,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Our JavaScript file -->
   <script src="./assets/js/script.js"></script>
-
+  <script src="./assets/js/timezone.js"></script>
 </body>
 
 </html>

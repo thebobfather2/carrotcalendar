@@ -99,3 +99,9 @@ footer p {
     text-align: center;
     color: white;
 }
+.time-form {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    align-items: center;
+}
