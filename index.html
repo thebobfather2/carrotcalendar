@@ -26,6 +26,7 @@
     </nav>
     <h1>Carrot</h1>
   </header>
+  
   <div class="time-form">
     <div class="form-floating">
       <input type="time" class="form-control time-input" id="time">
@@ -38,80 +39,26 @@
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button">Button</button>
     </div>
-    <!-- <label>
+    <label>
       Time Event
     </label>
-    <input type="time" id="time-input" class="form-control" aria-label="Text input with dropdown button"> -->
+    <input type="time" id="time-input" class="form-control" aria-label="Text input with dropdown button"> 
   </div>
 
   <main>
- HEAD
-=======
 
-    <!-- Add event button using Firebase - will need to update URL -->
-    <div class="btnEvent">
-      <input type="button" onclick="window.location.href='/firebase.html';" class="btn btn-warning btn-lg" value="Click To Add Event"/>
-    </div>
     <div class="timezone" id="timezone">
-
       <h3>EST: 8:00PM</h3>
     </div>
 
-    <!-- Page break gives space for add event button -->
-    <br></br>
-    
-    <!-- TODO: Add option to translate the page? -->
-    <<<<<<< HEAD <div id="calendar" class="card my-3">
-      </div>
-      =======
-      <div id="calendar-container" class="container-fluid my-3">
-        <div id="calendar" class="card">
-          <!-- TODO: Add buttons to change month? Add option to change the view (monthly/weekly)?-->
-          <div id="calendar-header" class="card-header"></div>
-          <div id="calendar-events" class="card-body">
-            <table class="table table-striped-columns">
-              <thead id="week-day"></thead>
-              <tbody id="week-row">
-                <tr id="week-1"></tr>
-                <tr id="week-2"></tr>
-                <tr id="week-3"></tr>
-                <tr id="week-4"></tr>
-                <tr id="week-5"></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- TODO: Add a drop down to choose the time of the event -->
+ <div id="calendar" class="card my-3"></div>
 
-
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" arial-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalLabel">December</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <input type="text" class="form-control" placeholder="Some quick example."></input>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      >>>>>>> c5c9831 (added time input)
   </main>
 
   <footer>
     <p> Made with &#129365 by Rabbits </p>
   </footer>
+
   <!--Firebase-->
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
@@ -125,15 +72,13 @@
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
   <!-- Day.js is a minified version of Moment.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.6/dayjs.min.js"
     integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Our JavaScript file -->
   <script src="./assets/js/script.js"></script>
-  <script src="./Assets/js/timezone.js"></script>
-
+  <script src="./assets/js/timezone.js"></script>
 </body>
 
 </html>

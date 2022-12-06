@@ -5,6 +5,9 @@ const third = 12;
 const fourth = 19;
 const fifth = 26;
 var today = dayjs().format('D');
+var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+var year = dayjs().format("YYYY");
+var currentMonth = dayjs().format('MMMM');
 
 const firebaseConfig = {
     apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
@@ -26,7 +29,7 @@ $(function () {
     var calendarHeader = $("<div>");
     calendarHeader.attr("id", "calendar-header");
     calendarHeader.addClass("card-header");
-    calendarHeader.text(dayjs().format('MMMM'));    // Displays the current month.
+    calendarHeader.text(currentMonth);    // Displays the current month.
 
     // Creates the calendar body.
     var calendarBody = $("<div>");
@@ -43,7 +46,6 @@ $(function () {
 
     // Loop to create a th element for each day of the week and display it.
     for (day = 0; day < 7; day++) {
-        var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
         var weekDay = $("<th>");
         weekDay.attr("scope", "col");
         weekDay.text(`${weekDays[day]}`);

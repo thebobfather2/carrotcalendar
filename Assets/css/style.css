@@ -104,21 +104,6 @@ footer p {
     color: white;
 }
 
-
-
-/* .button {
-    position: relative;
-    width: 200px;
-    height: 60px;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    font-size: 15px;
-} */
-
-
 .time-form {
     display: flex;
     justify-content: flex-end;
