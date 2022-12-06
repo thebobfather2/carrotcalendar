@@ -9,16 +9,27 @@ var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
 var year = dayjs().format("YYYY");
 var currentMonth = dayjs().format('MMMM');
 
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
+//     authDomain: "carrot-project-48376.firebaseapp.com",
+//     databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
+//     projectId: "carrot-project-48376",
+//     storageBucket: "carrot-project-48376.appspot.com",
+//     messagingSenderId: "984637850330",
+//     appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
+//     measurementId: "G-TY6PHL9QTL"
+// };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
-    authDomain: "carrot-project-48376.firebaseapp.com",
-    databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
-    projectId: "carrot-project-48376",
-    storageBucket: "carrot-project-48376.appspot.com",
-    messagingSenderId: "984637850330",
-    appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
-    measurementId: "G-TY6PHL9QTL"
-};
+    apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
+    authDomain: "carrot-calendar-8c002.firebaseapp.com",
+    databaseURL: "https://carrot-calendar-8c002-default-rtdb.firebaseio.com",
+    projectId: "carrot-calendar-8c002",
+    storageBucket: "carrot-calendar-8c002.appspot.com",
+    messagingSenderId: "527726326014",
+    appId: "1:527726326014:web:5814bc2f647cc92443b5af",
+    measurementId: "G-CLP0HKCDK1"
+  };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -88,6 +99,9 @@ $(function () {
         if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
             var dateId = $(this).find("input").attr("id"); // Gets the date.
             var eventId = $(this).find("input").val(); // Gets the user input.
+            console.log(eventId)
+            console.log(dateId)
+            console.log("********"); 
             $(".timeWidget").css("display", "block");
             $("#calendar").css("display", "none");
             if (eventId !== "") { // Conditional statement to ensure that it will only be stored on click if the textarea is not empty.
@@ -137,6 +151,8 @@ function renderWeek1() {
             day.append(inputEl);
             day.append(buttonEl);
         }
+        console.log("++++++++"); 
+        console.log(day)
 
         $("#week-1").append(day); // Appends first week row content.
     }
@@ -277,13 +293,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// TODO: Function to display the storage whenever the user loads the page.
-// function renderEvents() {
-//     var dateId = $(".input").attr("id"); // Gets the user input.
-//     dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
-//         var data = snapshot.val();
-//         console.log(data);
-//         var eventVal = data["events"];
-//         console.log(eventVal);
-//     }))
-// };
+//TODO: Function to display the storage whenever the user loads the page.
+function renderEvents() {
+    var dateId = $(".input").attr("id"); // Gets the user input.
+    dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
+        var data = snapshot.val();
+        console.log("====&&&&&DATA===="); 
+       console.log(data);
+       console.log("=====EVENTS======"); 
+        var eventVal = data["events"];
+        console.log("=====EVENTVAL======"); 
+       console.log(eventVal);
+       console.log("=+=+="); 
+    //    console.log(dateId)
+    }))
+};
