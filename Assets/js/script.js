@@ -88,6 +88,8 @@ $(function () {
         if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
             var dateId = $(this).find("input").attr("id"); // Gets the date.
             var eventId = $(this).find("input").val(); // Gets the user input.
+            $(".timeWidget").css("display", "block");
+            $("#calendar").css("display", "none");
             if (eventId !== "") { // Conditional statement to ensure that it will only be stored on click if the textarea is not empty.
                 var rabbit = $("<span>");
                 rabbit.html("&#128007");
