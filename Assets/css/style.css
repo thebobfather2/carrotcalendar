@@ -8,11 +8,15 @@
 }
 
 body {
+    min-height: 100vh;
+    min-width: 100%;
     background: #FDC830;
     /* fallback for old browsers */
-    background: var(--gradient);
+    background: -webkit-linear-gradient(to right, #F37335, #FDC830, #a83d08);
+    background: linear-gradient(to right, #F37335, #FDC830, #ff6214);
     animation: gradient 10s ease infinite;
     background-size: 400% 400%;
+    background: var(--gradient);
 }
 
 header {
@@ -82,7 +86,7 @@ td p {
     background: transparent;
 }
 
-#save-button  {
+#save-button {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -98,4 +102,26 @@ footer p {
     text-shadow: 1px 1px #000000;
     text-align: center;
     color: white;
+}
+
+
+
+/* .button {
+    position: relative;
+    width: 200px;
+    height: 60px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    font-size: 15px;
+} */
+
+
+.time-form {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    align-items: center;
 }
