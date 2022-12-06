@@ -7,6 +7,13 @@
     --gradient: linear-gradient(to right, var(--main-brand), var(--light-accent), var(--dark-accent));
 }
 
+.timeDisplay {
+    font-size: 1.8vw;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
 body {
     min-height: 100vh;
     min-width: 100%;
@@ -106,7 +113,33 @@ footer p {
 
 .time-form {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     padding-right: 10px;
     align-items: center;
+}
+
+.form-floating {
+    width: 400px;
+}
+
+.btn {
+    width: 400px;
+    background-color: white;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: var(--gradient);
+}
+
+.timeWidget {
+    margin-left: 300px;
+    display: none;
+    background-color: var(--main-brand);
+    width: 450px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 10px 10px #00000040;
+    margin-bottom: 60px;
 }
