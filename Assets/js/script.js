@@ -9,29 +9,29 @@ var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
 var currentMonth = dayjs().format('MMMM');
 
 //LARISSA'S DATABASE CONFIG
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
-//     authDomain: "carrot-project-48376.firebaseapp.com",
-//     databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
-//     projectId: "carrot-project-48376",
-//     storageBucket: "carrot-project-48376.appspot.com",
-//     messagingSenderId: "984637850330",
-//     appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
-//     measurementId: "G-TY6PHL9QTL"
-// };
+const firebaseConfig = {
+    apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
+    authDomain: "carrot-project-48376.firebaseapp.com",
+    databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
+    projectId: "carrot-project-48376",
+    storageBucket: "carrot-project-48376.appspot.com",
+    messagingSenderId: "984637850330",
+    appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
+    measurementId: "G-TY6PHL9QTL"
+};
 
 // Bryan's Database Config
-const firebaseConfig = {
-    apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
-    authDomain: "carrot-calendar-8c002.firebaseapp.com",
-    databaseURL: "https://carrot-calendar-8c002-default-rtdb.firebaseio.com",
-    projectId: "carrot-calendar-8c002",
-    storageBucket: "carrot-calendar-8c002.appspot.com",
-    messagingSenderId: "527726326014",
-    appId: "1:527726326014:web:5814bc2f647cc92443b5af",
-    measurementId: "G-CLP0HKCDK1",
-    cors: false
-  };
+// const firebaseConfig = {
+//     apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
+//     authDomain: "carrot-calendar-8c002.firebaseapp.com",
+//     databaseURL: "https://carrot-calendar-8c002-default-rtdb.firebaseio.com",
+//     projectId: "carrot-calendar-8c002",
+//     storageBucket: "carrot-calendar-8c002.appspot.com",
+//     messagingSenderId: "527726326014",
+//     appId: "1:527726326014:web:5814bc2f647cc92443b5af",
+//     measurementId: "G-CLP0HKCDK1",
+//     cors: false
+// };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -93,18 +93,13 @@ $(function () {
     renderWeek4();
     renderWeek5();
     renderEvents();
-    // renderEvents();
-
 
     // Added event listener to the date container.
-    $(".td-date").click(function (event) {
-        var target = $(event.target);
-        if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
-            $(".time-widget").css("display", "block");
-            $("#calendar").css("display", "none");
-            $("#sidebar").css("display", "none");
-            $("#main").css("height", "10vh");
-        }
+    $("#save-button").click(function () {
+        $(".time-widget").css("display", "block");
+        $("#calendar").css("display", "none");
+        $("#sidebar").css("display", "none");
+        $("#main").css("height", "10vh");
     }
     )
 }
@@ -128,10 +123,9 @@ function storeEvent() {
             purpose: "Add event to calendar"
         });
     }
-
 }
 
-function renderWeek1() {
+function renderWeek1(data) {
     // Loop to create a td element for each date of the first row and display it.
     for (date = first; date < 8; date++) {
         var day = $("<td>");
@@ -151,6 +145,11 @@ function renderWeek1() {
             textareaEl.attr('disabled', 'disabled'); // Disable so that it displays only the database items.
             textareaEl.addClass("textarea");
 
+            // if (dayId === data) {
+            //     textareaEl.text(data['events']);
+            //     textareaEl.removeAttr('disabled');
+            // }
+
             // Creates button to store the user's input.
             var buttonEl = $("<button>");
             buttonEl.attr('id', 'save-button');
@@ -160,7 +159,6 @@ function renderWeek1() {
             day.append(textareaEl);
             day.append(buttonEl);
         }
-
         $("#week-1").append(day); // Appends first week row content.
     }
 }
@@ -183,7 +181,6 @@ function renderWeek2() {
         buttonEl.attr('id', 'save-button');
         buttonEl.attr('type', 'submit');
         buttonEl.html("&#129365");
-
 
         day.append(textareaEl);
         day.append(buttonEl);
@@ -209,7 +206,6 @@ function renderWeek3() {
         buttonEl.attr('type', 'submit');
         buttonEl.html("&#129365");
 
-
         day.append(textareaEl);
         day.append(buttonEl);
         $("#week-3").append(day);
@@ -233,7 +229,6 @@ function renderWeek4() {
         buttonEl.attr('id', 'save-button');
         buttonEl.attr('type', 'submit');
         buttonEl.html("&#129365");
-
 
         day.append(textareaEl);
         day.append(buttonEl);
@@ -263,40 +258,16 @@ function renderWeek5() {
             buttonEl.attr('type', 'submit');
             buttonEl.html("&#129365");
 
-
             day.append(textareaEl);
             day.append(buttonEl);
         }
-
         $("#week-5").append(day);
     }
 };
 
-let timeForTheEvent = [];
-console.log(time);
-const addTime = (ev) => {
-    ev.preventDefault(); // To stop submitting
-    let time = {
-        id: Time.now(),
-        time: document.getElementById('time').value,
-        text: document.getElementById('text').value,
-        submit: document.getElementById('submit').value,
-    }
-    timeForTheEvent.push(time);
-    document.querySelector('form').reset(); // To clear the form for the next customers
-
-    // For display purposes only
-    // console.warn('added', { timeForTheEvent });
-    // let pre = document.querySelector('#msg pre');
-    // pre.textContent = '\n' + JSON.stringify(timeForTheEvent, '\t', 2);
-
-    // Saving to localStorage
-    localStorage.setItem('Time List', JSON.stringify(timeForTheEvent));
-}
-
 //TODO: Function to display the storage whenever the user loads the page.
 function renderEvents() {
-    var dateId = $(".input").attr("id"); // Gets the user input.
+    var dateId = $("textarea").attr("id"); // Gets the user input.
     dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
         var data = snapshot.val();
         //below logs our events in the console!!!
@@ -307,11 +278,12 @@ function renderEvents() {
 //        console.log("=====EVENTS======"); 
         var eventVal = data["events"];
 //         console.log("=====EVENTVAL======"); 
-//        console.log(eventVal);
+       console.log(eventVal);
 //        console.log("=+=+="); 
 //     //    console.log(dateId)
     }))
 };
+
 
 // const db = getDatabase();
 // const ref = db.ref('server/saving-data/fireblog/posts');
