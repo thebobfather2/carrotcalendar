@@ -8,16 +8,30 @@ var today = dayjs().format('D');
 var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 var currentMonth = dayjs().format('MMMM');
 
+//LARISSA'S DATABASE CONFIG
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
+//     authDomain: "carrot-project-48376.firebaseapp.com",
+//     databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
+//     projectId: "carrot-project-48376",
+//     storageBucket: "carrot-project-48376.appspot.com",
+//     messagingSenderId: "984637850330",
+//     appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
+//     measurementId: "G-TY6PHL9QTL"
+// };
+
+// Bryan's Database Config
 const firebaseConfig = {
-    apiKey: "AIzaSyDJhuHYMR82SyUqzVSaUusd5-bkX3O2lBA",
-    authDomain: "carrot-project-48376.firebaseapp.com",
-    databaseURL: "https://carrot-project-48376-default-rtdb.firebaseio.com",
-    projectId: "carrot-project-48376",
-    storageBucket: "carrot-project-48376.appspot.com",
-    messagingSenderId: "984637850330",
-    appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
-    measurementId: "G-TY6PHL9QTL"
-};
+    apiKey: "AIzaSyD-tLX0LyCbkwyIIoCMZLkuHFfG1NeDWyc",
+    authDomain: "carrot-calendar-8c002.firebaseapp.com",
+    databaseURL: "https://carrot-calendar-8c002-default-rtdb.firebaseio.com",
+    projectId: "carrot-calendar-8c002",
+    storageBucket: "carrot-calendar-8c002.appspot.com",
+    messagingSenderId: "527726326014",
+    appId: "1:527726326014:web:5814bc2f647cc92443b5af",
+    measurementId: "G-CLP0HKCDK1",
+    cors: false
+  };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -78,6 +92,7 @@ $(function () {
     renderWeek3();
     renderWeek4();
     renderWeek5();
+    renderEvents();
     // renderEvents();
 
 
@@ -257,42 +272,53 @@ function renderWeek5() {
     }
 };
 
-// let timeForTheEvent = [];
-// console.log(time);
-// const addTime = (ev) => {
-//     ev.preventDefault(); // To stop submitting
-//     let time = {
-//         id: Time.now(),
-//         time: document.getElementById('time').value,
-//         text: document.getElementById('text').value,
-//         submit: document.getElementById('submit').value,
-//     }
-//     timeForTheEvent.push(time);
-//     document.querySelector('form').reset(); // To clear the form for the next customers
+let timeForTheEvent = [];
+console.log(time);
+const addTime = (ev) => {
+    ev.preventDefault(); // To stop submitting
+    let time = {
+        id: Time.now(),
+        time: document.getElementById('time').value,
+        text: document.getElementById('text').value,
+        submit: document.getElementById('submit').value,
+    }
+    timeForTheEvent.push(time);
+    document.querySelector('form').reset(); // To clear the form for the next customers
 
-//     // For display purposes only
-//     // console.warn('added', { timeForTheEvent });
-//     // let pre = document.querySelector('#msg pre');
-//     // pre.textContent = '\n' + JSON.stringify(timeForTheEvent, '\t', 2);
+    // For display purposes only
+    // console.warn('added', { timeForTheEvent });
+    // let pre = document.querySelector('#msg pre');
+    // pre.textContent = '\n' + JSON.stringify(timeForTheEvent, '\t', 2);
 
-//     // Saving to localStorage
-//     localStorage.setItem('Time List', JSON.stringify(timeForTheEvent));
-// }
+    // Saving to localStorage
+    localStorage.setItem('Time List', JSON.stringify(timeForTheEvent));
+}
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.getElementById('submit').addEventListener('click', addTime)
-// });
+//TODO: Function to display the storage whenever the user loads the page.
+function renderEvents() {
+    var dateId = $(".input").attr("id"); // Gets the user input.
+    dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
+        var data = snapshot.val();
+        //below logs our events in the console!!!
+        console.log(data);
+        console.log("hello");
+//         console.log("====&&&&&DATA===="); 
+//        console.log(data);
+//        console.log("=====EVENTS======"); 
+        var eventVal = data["events"];
+//         console.log("=====EVENTVAL======"); 
+//        console.log(eventVal);
+//        console.log("=+=+="); 
+//     //    console.log(dateId)
+    }))
+};
 
+// const db = getDatabase();
+// const ref = db.ref('server/saving-data/fireblog/posts');
 
-// TODO: Function to display the storage whenever the user loads the page.
-// function renderEvents() {
-//     var dateId = $(".input").attr("id"); // Gets the user input.
-//     dateId.getDatabase().ref("/date-event/" + dateId).on('value', function (snapshot) {
-//         var data = snapshot.val();
-//         console.log(data);
-//     })
-// };
-//         var eventVal = data["events"];
-//         console.log(eventVal);
-//     }))
-// }
+// // Attach an asynchronous callback to read the data at our posts reference
+// ref.on('value', (snapshot) => {
+//     console.log(snapshot.val());
+//   }, (errorObject) => {
+//     console.log('The read failed: ' + errorObject.name);
+//   }); 

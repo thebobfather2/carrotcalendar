@@ -7,6 +7,13 @@
     --gradient: linear-gradient(to right, var(--main-brand), var(--light-accent), var(--dark-accent));
 }
 
+.timeDisplay {
+    font-size: 1.8vw;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
 body {
     animation: gradient 10s ease infinite;
     background-size: 400% 400%;

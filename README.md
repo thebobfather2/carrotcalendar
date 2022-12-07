@@ -1,9 +1,9 @@
 
 # Carrot
 ## Description
-Keeping up with Bobby's Rabbits events has never been easier!
+Keeping up with Bobby Rabbits' events has never been easier!
 
-Our new calendar is the perfect tool for connecting players around the world, no matter where they're located or what language they speak. With **Carrot**, you can change the calendar time zone to know what time an event will take place for your friends. You can also easily switch between languages to view events in your native tongue.
+Our new calendar is the perfect tool for connecting community memebers from around the world, no matter where they're located or what language they speak. With **Carrot**, you can change the calendar time zone to know what time an event will take place for your friends. You can also easily switch between languages to view events in your native tongue.
 
 ## Installation
 
@@ -42,7 +42,7 @@ The following gif shows the web application's appearance and functionality:
 
 ## Links
 
-🔗 [Bobby's Rabbits](https://www.bobbyrabbits.com/)
+🔗 [Bobby Rabbits](https://www.bobbyrabbits.com/)
 
 ## License
 
@@ -55,7 +55,7 @@ Please refer to the [LICENSE](https://choosealicense.com/licenses/mit/) in the r
 
 ## User Story
 
-AS Bobby's Rabbits
+AS A Member Of Bobby Rabbits
 I WANT a calendar that fits company branding which will allow user interaction
 SO THAT our users can create and RSVP for events
 
