@@ -93,6 +93,7 @@ $(function () {
     renderWeek3();
     renderWeek4();
     renderWeek5();
+    renderEvents();
     // renderEvents();
 
 
@@ -102,9 +103,11 @@ $(function () {
         if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
             var dateId = $(this).find("input").attr("id"); // Gets the date.
             var eventId = $(this).find("input").val(); // Gets the user input.
-            console.log(eventId)
+
+            // check if date and event info save to variable:
             console.log(dateId)
-            console.log("********"); 
+            console.log(eventId)
+
             $(".timeWidget").css("display", "block");
             $("#calendar").css("display", "none");
             if (eventId !== "") { // Conditional statement to ensure that it will only be stored on click if the textarea is not empty.
@@ -292,25 +295,38 @@ const addTime = (ev) => {
 //     document.getElementById('btn').addEventListener('click', addTime)
 // });
 
-$(document).on('click','#btn',function(){
-    console.log(addTime)
-    // document.getElementById('btn').addEventListener('click', addTime)
-    });
-
-
+// $(document).on('click','#btn',function(){
+//     console.log(addTime)
+//     document.getElementById('btn').addEventListener('click', addTime)
+//     });
 
 //TODO: Function to display the storage whenever the user loads the page.
 function renderEvents() {
     var dateId = $(".input").attr("id"); // Gets the user input.
     dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
         var data = snapshot.val();
-        console.log("====&&&&&DATA===="); 
-       console.log(data);
-       console.log("=====EVENTS======"); 
+        //below logs our events in the console!!!
+        console.log(data);
+        console.log("hello");
+//         console.log("====&&&&&DATA===="); 
+//        console.log(data);
+//        console.log("=====EVENTS======"); 
         var eventVal = data["events"];
-        console.log("=====EVENTVAL======"); 
-       console.log(eventVal);
-       console.log("=+=+="); 
-    //    console.log(dateId)
+//         console.log("=====EVENTVAL======"); 
+//        console.log(eventVal);
+//        console.log("=+=+="); 
+//     //    console.log(dateId)
     }))
 };
+
+// const db = getDatabase();
+// const ref = db.ref('server/saving-data/fireblog/posts');
+
+// // Attach an asynchronous callback to read the data at our posts reference
+// ref.on('value', (snapshot) => {
+//     console.log(snapshot.val());
+//   }, (errorObject) => {
+//     console.log('The read failed: ' + errorObject.name);
+//   }); 
+
+
