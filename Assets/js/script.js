@@ -6,7 +6,6 @@ const fourth = 19;
 const fifth = 26;
 var today = dayjs().format('D');
 var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-var year = dayjs().format("YYYY");
 var currentMonth = dayjs().format('MMMM');
 
 //LARISSA'S DATABASE CONFIG
@@ -42,7 +41,7 @@ $(function () {
     // Creates the calendar header
     var calendarHeader = $("<div>");
     calendarHeader.attr("id", "calendar-header");
-    calendarHeader.addClass("card-header");
+    calendarHeader.addClass("card-header fs-1");
     calendarHeader.text(currentMonth);    // Displays the current month.
 
     // Creates the calendar body.
@@ -101,32 +100,36 @@ $(function () {
     $(".td-date").click(function (event) {
         var target = $(event.target);
         if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
-            var dateId = $(this).find("input").attr("id"); // Gets the date.
-            var eventId = $(this).find("input").val(); // Gets the user input.
-
-            // check if date and event info save to variable:
-            console.log(dateId)
-            console.log(eventId)
-
-            $(".timeWidget").css("display", "block");
+            $(".time-widget").css("display", "block");
             $("#calendar").css("display", "none");
-            if (eventId !== "") { // Conditional statement to ensure that it will only be stored on click if the textarea is not empty.
-                var rabbit = $("<span>");
-                rabbit.html("&#128007");
-                $(this).find("button").append(rabbit); // Adds a rabbit next to the carrot onclick.
-
-                // Add events to database.
-                firebase.database().ref("/date-event/" + dateId).push({
-                    date: dateId,
-                    events: eventId,
-                    purpose: "Add event to calendar"
-                });
-            }
+            $("#sidebar").css("display", "none");
+            $("#main").css("height", "10vh");
         }
     }
     )
 }
-);
+)
+
+function storeEvent() {
+    var eventDetail = $('#text').val();
+    var dateDetail = $('#date').val();
+    var timeDetail = $('#time').val();
+    var submitBtn = $('#submit');
+    var backBtn = $('#back');
+
+    if (eventDetail && dateDetail && timeDetail !== "") { // Conditional statement to ensure that it will only be stored on click if the text, date and time are not empty.
+        submitBtn.css("display", "none");
+        backBtn.html('Back &#129365&#128007'); // Adds a rabbit next to the carrot onclick.
+
+        // Add events to database.
+        firebase.database().ref('/' + dateDetail).push({
+            time: timeDetail,
+            events: eventDetail,
+            purpose: "Add event to calendar"
+        });
+    }
+
+}
 
 function renderWeek1() {
     // Loop to create a td element for each date of the first row and display it.
@@ -142,11 +145,11 @@ function renderWeek1() {
         if (valueId >= 4) {
             day.text(dayId);
 
-            // Creates inputs.
-            var inputEl = $('<input>');
-            inputEl.attr("id", dayId);
-            inputEl.attr('type', 'text');
-            inputEl.addClass("input")
+            // Creates textareas.
+            var textareaEl = $('<textarea>');
+            textareaEl.attr("id", dayId);
+            textareaEl.attr('disabled', 'disabled'); // Disable so that it displays only the database items.
+            textareaEl.addClass("textarea");
 
             // Creates button to store the user's input.
             var buttonEl = $("<button>");
@@ -154,7 +157,7 @@ function renderWeek1() {
             buttonEl.attr('type', 'submit');
             buttonEl.html("&#129365"); // Carrot's unicode.
 
-            day.append(inputEl);
+            day.append(textareaEl);
             day.append(buttonEl);
         }
 
@@ -171,10 +174,10 @@ function renderWeek2() {
         // TODO: Add function to check the week day
         day.text(`${date}`);
 
-        var inputEl = $('<input>');
-        inputEl.attr("id", date);
-        inputEl.attr('type', 'text');
-        inputEl.addClass("input")
+        var textareaEl = $('<textarea>');
+        textareaEl.attr("id", date);
+        textareaEl.attr('disabled', 'disabled');
+        textareaEl.addClass("textarea")
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
@@ -182,7 +185,7 @@ function renderWeek2() {
         buttonEl.html("&#129365");
 
 
-        day.append(inputEl);
+        day.append(textareaEl);
         day.append(buttonEl);
         $("#week-2").append(day);
     }
@@ -196,10 +199,10 @@ function renderWeek3() {
         // TODO: Add function to check the week day
         day.text(`${date}`);
 
-        var inputEl = $('<input>');
-        inputEl.attr("id", date);
-        inputEl.attr('type', 'text');
-        inputEl.addClass("input")
+        var textareaEl = $('<textarea>');
+        textareaEl.attr("id", date);
+        textareaEl.attr('disabled', 'disabled');
+        textareaEl.addClass("textarea")
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
@@ -207,7 +210,7 @@ function renderWeek3() {
         buttonEl.html("&#129365");
 
 
-        day.append(inputEl);
+        day.append(textareaEl);
         day.append(buttonEl);
         $("#week-3").append(day);
     }
@@ -221,10 +224,10 @@ function renderWeek4() {
         // TODO: Add function to check the week day
         day.text(`${date}`);
 
-        var inputEl = $('<input>');
-        inputEl.attr("id", date);
-        inputEl.attr('type', 'text');
-        inputEl.addClass("input")
+        var textareaEl = $('<textarea>');
+        textareaEl.attr("id", date);
+        textareaEl.attr('disabled', 'disabled');
+        textareaEl.addClass("textarea")
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
@@ -232,7 +235,7 @@ function renderWeek4() {
         buttonEl.html("&#129365");
 
 
-        day.append(inputEl);
+        day.append(textareaEl);
         day.append(buttonEl);
         $("#week-4").append(day);
     }
@@ -250,10 +253,10 @@ function renderWeek5() {
         if (date < 32) {
             day.text(`${date}`);
 
-            var inputEl = $('<input>');
-            inputEl.attr("id", date);
-            inputEl.attr('type', 'text');
-            inputEl.addClass("input")
+            var textareaEl = $('<textarea>');
+            textareaEl.attr("id", date);
+            textareaEl.attr('disabled', 'disabled');
+            textareaEl.addClass("textarea")
 
             var buttonEl = $("<button>");
             buttonEl.attr('id', 'save-button');
@@ -261,7 +264,7 @@ function renderWeek5() {
             buttonEl.html("&#129365");
 
 
-            day.append(inputEl);
+            day.append(textareaEl);
             day.append(buttonEl);
         }
 
@@ -291,15 +294,6 @@ const addTime = (ev) => {
     localStorage.setItem('Time List', JSON.stringify(timeForTheEvent));
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.getElementById('btn').addEventListener('click', addTime)
-// });
-
-// $(document).on('click','#btn',function(){
-//     console.log(addTime)
-//     document.getElementById('btn').addEventListener('click', addTime)
-//     });
-
 //TODO: Function to display the storage whenever the user loads the page.
 function renderEvents() {
     var dateId = $(".input").attr("id"); // Gets the user input.
@@ -328,5 +322,3 @@ function renderEvents() {
 //   }, (errorObject) => {
 //     console.log('The read failed: ' + errorObject.name);
 //   }); 
-
-
