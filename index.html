@@ -22,7 +22,7 @@
 <body>
 
   <header class="pb-3 mb-4 border-bottom position-relative">
-   
+
 
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <img src="assets/images/carrot1.png" alt="Logo" width="230" height="200" class="me-2" viewBox="0 0 118 94">
@@ -31,23 +31,24 @@
         fill="currentColor"></path>
       <h1 class="display-3 mt-5">Carrot</h1>
     </a>
+
     <div class="timezone position-absolute top-0 end-0 mt-3 me-3" id="timezone">
-       <!--Timezone bootstrap widget-->
-    <div class="timezone" id="timezone">
-      <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Timezone <div class="caret"></div>
-        </button>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Timezone
+        </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" onclick="estFunction()" href="#">EST</a>
+          <li><a class="dropdown-item" href="#" onclick="estFunction()">EST</a></li>
           <li><a class="dropdown-item" href="#">CST</a></li>
           <li><a class="dropdown-item" href="#">PST</a></li>
           <li><a class="dropdown-item" href="#">JAPAN</a></li>
           <li><a class="dropdown-item" href="#">EUR</a></li>
-          </ul>
-      </div>
+        </ul>
+      </li>
       <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
-    </div>
+
+      <!--Timezone bootstrap widget-->
+
   </header>
 
   <div class="time-widget rounded mx-auto">
@@ -82,8 +83,9 @@
     <div id="calendar" class="card my-3 rounded flex-col"></div>
     <aside id="sidebar" class="bg-light rounded flex-col position-relative">
       <p class="fs-5">Today's Events</p>
-      <button id="event" type="button" class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x"
-        data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button id="event" type="button"
+        class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
         Enter an Event!
       </button>
     </aside>
