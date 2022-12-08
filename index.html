@@ -22,6 +22,8 @@
 <body>
 
   <header class="pb-3 mb-4 border-bottom position-relative">
+   
+
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <img src="assets/images/carrot1.png" alt="Logo" width="230" height="200" class="me-2" viewBox="0 0 118 94">
       <path fill-rule="evenodd" clip-rule="evenodd"
@@ -30,6 +32,20 @@
       <h1 class="display-3 mt-5">Carrot</h1>
     </a>
     <div class="timezone position-absolute top-0 end-0 mt-3 me-3" id="timezone">
+       <!--Timezone bootstrap widget-->
+    <div class="timezone" id="timezone">
+      <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Timezone <div class="caret"></div>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" onclick="estFunction()" href="#">EST</a>
+          <li><a class="dropdown-item" href="#">CST</a></li>
+          <li><a class="dropdown-item" href="#">PST</a></li>
+          <li><a class="dropdown-item" href="#">JAPAN</a></li>
+          <li><a class="dropdown-item" href="#">EUR</a></li>
+          </ul>
+      </div>
       <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
     </div>
   </header>
