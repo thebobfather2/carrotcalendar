@@ -5,7 +5,7 @@ const third = 12;
 const fourth = 19;
 const fifth = 26;
 var today = dayjs().format('D');
-var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var currentMonth = dayjs().format('MMMM');
 
 //LARISSA'S DATABASE CONFIG
@@ -17,7 +17,8 @@ const firebaseConfig = {
     storageBucket: "carrot-project-48376.appspot.com",
     messagingSenderId: "984637850330",
     appId: "1:984637850330:web:6ac6b98de67f5cdbcd9be3",
-    measurementId: "G-TY6PHL9QTL"
+    measurementId: "G-TY6PHL9QTL",
+    cors: false
 };
 
 // Bryan's Database Config
@@ -86,24 +87,37 @@ $(function () {
     calendar.append(calendarHeader); // Appends the calendar header to the calendar container.
     calendar.append(calendarBody); // Appends the calendar body to the calendar container.
 
-    // Calls the functions to create the date containers.
-    renderWeek1();
-    renderWeek2();
-    renderWeek3();
-    renderWeek4();
-    renderWeek5();
     renderEvents();
+})
 
-    // Added event listener to the date container.
-    $("#save-button").click(function () {
-        $(".time-widget").css("display", "block");
-        $("#calendar").css("display", "none");
-        $("#sidebar").css("display", "none");
-        $("#main").css("height", "10vh");
-    }
-    )
-}
-)
+// Function to display the storage whenever the user loads the page.
+function renderEvents() {
+    var dateDetail = $('#date').val();
+
+    firebase.database().ref('/' + dateDetail).on("value", function (snapshot) {
+        var data = snapshot.val();
+
+        // Calls the functions to create the date containers.
+        renderWeek1(data);
+        renderWeek2(data);
+        renderWeek3(data);
+        renderWeek4(data);
+        renderWeek5(data);
+
+        /// Added event listener to the date container.
+        $(".td-date").click(function (event) {
+            var target = $(event.target);
+            console.log(target);
+            if (target.is("button")) { // Conditional statement to ensure that the function will only be executed if the button is clicked.
+                $(".time-widget").css("display", "block");
+                $("#calendar").css("display", "none");
+                $("#sidebar").css("display", "none");
+                $("#main").css("height", "10vh");
+            }
+        });
+
+    })
+};
 
 function storeEvent() {
     var eventDetail = $('#text').val();
@@ -123,7 +137,7 @@ function storeEvent() {
             purpose: "Add event to calendar"
         });
     }
-}
+};
 
 function renderWeek1(data) {
     // Loop to create a td element for each date of the first row and display it.
@@ -137,18 +151,29 @@ function renderWeek1(data) {
 
         // Since December starts on a Thursday, the first 3 containers must be empty.
         if (valueId >= 4) {
+            if (dayId < 10) {
+                dayId = '0' + dayId;
+            }
+
             day.text(dayId);
 
             // Creates textareas.
             var textareaEl = $('<textarea>');
-            textareaEl.attr("id", dayId);
+            var fullDateId = '2022-12-' + dayId;
+            textareaEl.attr("id", '2022-12-' + dayId);
             textareaEl.attr('disabled', 'disabled'); // Disable so that it displays only the database items.
             textareaEl.addClass("textarea");
 
-            // if (dayId === data) {
-            //     textareaEl.text(data['events']);
-            //     textareaEl.removeAttr('disabled');
-            // }
+            try {
+                var dateObj = data[fullDateId]
+                for (key in dateObj) {
+                    var eventInput = dateObj[key].events;
+                    textareaEl.text(eventInput);
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
 
             // Creates button to store the user's input.
             var buttonEl = $("<button>");
@@ -159,23 +184,42 @@ function renderWeek1(data) {
             day.append(textareaEl);
             day.append(buttonEl);
         }
+
         $("#week-1").append(day); // Appends first week row content.
     }
-}
+};
 
-function renderWeek2() {
+function renderWeek2(data) {
     // Date = first date of the second row. 
     for (date = second; date < third; date++) {
         var day = $("<td>");
         day.attr('id', `${date}`);
         day.addClass('td-date');
-        // TODO: Add function to check the week day
+
+        if (date < 10) {
+            date = '0' + date;
+        }
+
         day.text(`${date}`);
 
+        // Creates textareas.
         var textareaEl = $('<textarea>');
-        textareaEl.attr("id", date);
+        var fullDateId = '2022-12-' + date;
+        textareaEl.attr("id", '2022-12-' + date);
         textareaEl.attr('disabled', 'disabled');
-        textareaEl.addClass("textarea")
+        textareaEl.addClass("textarea");
+
+        try {
+            console.log(data[fullDateId]);
+            var dateObj = data[fullDateId];
+            for (key in dateObj) {
+                var eventInput = dateObj[key].events;
+                textareaEl.text(eventInput);
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
@@ -184,11 +228,12 @@ function renderWeek2() {
 
         day.append(textareaEl);
         day.append(buttonEl);
+
         $("#week-2").append(day);
     }
-}
+};
 
-function renderWeek3() {
+function renderWeek3(data) {
     for (date = third; date < fourth; date++) {
         var day = $("<td>");
         day.attr('id', `${date}`);
@@ -196,10 +241,24 @@ function renderWeek3() {
         // TODO: Add function to check the week day
         day.text(`${date}`);
 
+        // Creates textareas.
         var textareaEl = $('<textarea>');
-        textareaEl.attr("id", date);
+        var fullDateId = '2022-12-' + date;
+        textareaEl.attr("id", '2022-12-' + date);
         textareaEl.attr('disabled', 'disabled');
-        textareaEl.addClass("textarea")
+        textareaEl.addClass("textarea");
+
+        try {
+            console.log(data[fullDateId]);
+            var dateObj = data[fullDateId]
+            for (key in dateObj) {
+                var eventInput = dateObj[key].events;
+                textareaEl.text(eventInput);
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
@@ -210,9 +269,9 @@ function renderWeek3() {
         day.append(buttonEl);
         $("#week-3").append(day);
     }
-}
+};
 
-function renderWeek4() {
+function renderWeek4(data) {
     for (date = fourth; date < fifth; date++) {
         var day = $("<td>");
         day.attr('id', `${date}`);
@@ -220,10 +279,24 @@ function renderWeek4() {
         // TODO: Add function to check the week day
         day.text(`${date}`);
 
+        // Creates textareas.
         var textareaEl = $('<textarea>');
-        textareaEl.attr("id", date);
+        var fullDateId = '2022-12-' + date;
+        textareaEl.attr("id", '2022-12-' + date);
         textareaEl.attr('disabled', 'disabled');
-        textareaEl.addClass("textarea")
+        textareaEl.addClass("textarea");
+
+        try {
+            console.log(data[fullDateId]);
+            var dateObj = data[fullDateId]
+            for (key in dateObj) {
+                var eventInput = dateObj[key].events;
+                textareaEl.text(eventInput);
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
 
         var buttonEl = $("<button>");
         buttonEl.attr('id', 'save-button');
@@ -234,24 +307,37 @@ function renderWeek4() {
         day.append(buttonEl);
         $("#week-4").append(day);
     }
-}
+};
 
-function renderWeek5() {
+function renderWeek5(data) {
     // Added 33 so that we have all the grid's containers.
     for (date = fifth; date < 33; date++) {
         var day = $("<td>");
         day.attr('id', `${date}`);
         day.addClass('td-date');
 
-        // TODO: Add function to check the week day
         // If it is the last container (32), it only creates an empty string.
         if (date < 32) {
             day.text(`${date}`);
 
+            // Creates textareas.
             var textareaEl = $('<textarea>');
-            textareaEl.attr("id", date);
+            var fullDateId = '2022-12-' + date;
+            textareaEl.attr("id", '2022-12-' + date);
             textareaEl.attr('disabled', 'disabled');
-            textareaEl.addClass("textarea")
+            textareaEl.addClass("textarea");
+
+            try {
+                console.log(data[fullDateId]);
+                var dateObj = data[fullDateId]
+                for (key in dateObj) {
+                    var eventInput = dateObj[key].events;
+                    textareaEl.text(eventInput);
+                }
+            }
+            catch (err) {
+                console.log(err)
+            }
 
             var buttonEl = $("<button>");
             buttonEl.attr('id', 'save-button');
@@ -265,32 +351,3 @@ function renderWeek5() {
     }
 };
 
-//TODO: Function to display the storage whenever the user loads the page.
-function renderEvents() {
-    var dateId = $("textarea").attr("id"); // Gets the user input.
-    dateId.each(firebase.database().ref("/date-event/" + dateId).on("value", function (snapshot) {
-        var data = snapshot.val();
-        //below logs our events in the console!!!
-        console.log(data);
-        console.log("hello");
-//         console.log("====&&&&&DATA===="); 
-//        console.log(data);
-//        console.log("=====EVENTS======"); 
-        var eventVal = data["events"];
-//         console.log("=====EVENTVAL======"); 
-       console.log(eventVal);
-//        console.log("=+=+="); 
-//     //    console.log(dateId)
-    }))
-};
-
-
-// const db = getDatabase();
-// const ref = db.ref('server/saving-data/fireblog/posts');
-
-// // Attach an asynchronous callback to read the data at our posts reference
-// ref.on('value', (snapshot) => {
-//     console.log(snapshot.val());
-//   }, (errorObject) => {
-//     console.log('The read failed: ' + errorObject.name);
-//   }); 
