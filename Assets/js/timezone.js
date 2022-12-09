@@ -1,8 +1,6 @@
 
-// const timezoneDiv = document.getElementById('#timezone')
-// const country = document.getElementById('country')
-// let city = "America/New_York"
-var value;
+
+// import localizedFormat from 'dayjs/plugin/localizedFormat';
 
 
 //fetching the timezone api
@@ -18,43 +16,22 @@ const timezone = (city) => {
             console.log(json.abbreviation)
             //the next line works perfectly, then switches to EST as if it was a default
             console.log(json.datetime)
-            console.log('here')
 
-            // let jsonString = json.datetime
-            // time = console.log(new Date(jsonString).toLocaleString({ hour12: false }))
-            console.log('here')
+
+            let jsonString = json.datetime
+            time = console.log(new Date(jsonString).toLocaleString('en-US', { hour12: false }))
 
 
             //below currently prints JUST the second json, not both. It also prints the long date, not the hour
-            document.getElementById('timeDisplay').innerText = (json.datetime).toLocaleString('en-US', { hour12: false })
-            var d = json.datetime.toString()
-            // var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-            // d.getHours() + ":" + d.getMinutes();
-            console.log(d)
-            var dt = json.datetime
-            console.log(new Date(json.unixtime * 1000).toLocaleTimeString('en-US'))
-            // console.log(dt.toU ().split`T`[0])
-
-
+            document.getElementById('timeDisplay').innerText = new Date(jsonString).toLocaleString('en-US', { hour12: false })
         })
 }
 
-// ('dropdown-item').addEventListener("click", function () {
-    
-// })
+
 
 var est = document.getElementById('inputEST')
 
-// inputEST.onclick () => {
-//     var cityEST = "America/New_York"
-//     timezone(cityEST)
 
-// }
-
-// inputPST.onclick () {
-//     var cityPST = "America/Los_Angeles"
-//     timezone(cityPST)
-// }
 
 estFunction = (city) => {
 
@@ -77,22 +54,22 @@ estFunction = (city) => {
     
 // }
 
-pstFunction = (city) => {
-    var cityPST = "America/Los_Angeles"
-    timezone(cityPST)
-    
-}
+// pstFunction = (city) => {
+//     var cityPST = "America/Los_Angeles"
+//     timezone(cityPST)
+//     console.log(cityPST)
 
-jpFunction = (city) => {
-    timezone("Asia/Tokyo") 
-    return city;   
-}
+// }
+
+// jpFunction = (city) => {
+//     timezone("Asia/Tokyo") 
+//     return city.format();   
+// }
+
 
 // eurFunction = (city) => {
 //     timezone("America/New_York")
 //     console.log(timezone("America/New_York"))
     
 // }
-// estFunction();
-pstFunction();
 
