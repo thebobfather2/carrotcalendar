@@ -38,12 +38,12 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Timezone
         </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#" onclick="estFunction()">EST</a></li>
-          <li><a class="dropdown-item" href="#">CST</a></li>
-          <li><a class="dropdown-item" href="#">PST</a></li>
-          <li><a class="dropdown-item" href="#">JAPAN</a></li>
-          <li><a class="dropdown-item" href="#">EUR</a></li>
+        <ul class="dropdown-menu"> <!--should i put the ids as the text input?-->
+          <li><a class="dropdown-item" id="inputEST" href="#" onclick="estFunction()">EST</a></li>
+          <li><a class="dropdown-item" id="inputCST" href="#" onclick="cstFunction()">CST</a></li>
+          <li><a class="dropdown-item" id="inputPST" href="#" onclick="pstFunction()">PST</a></li>
+          <li><a class="dropdown-item" id="inputJP" href="#" onclick="jpFunction()">JAPAN</a></li>
+          <li><a class="dropdown-item" id="inputEUR" href="#" onclick="eurFunction()">EUR</a></li>
         </ul>
       </li>
       <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>

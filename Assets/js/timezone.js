@@ -1,11 +1,13 @@
 
 // const timezoneDiv = document.getElementById('#timezone')
 // const country = document.getElementById('country')
-let city = "America/New_York"
+// let city = "America/New_York"
+var value;
 
 
 //fetching the timezone api
 const timezone = (city) => {
+    // event.preventDefault()
     var timezoneApi = "http://worldtimeapi.org/api/timezone/" + city 
 
     fetch(timezoneApi)
@@ -14,45 +16,83 @@ const timezone = (city) => {
         .then(json => {
             console.log(json)
             console.log(json.abbreviation)
+            //the next line works perfectly, then switches to EST as if it was a default
             console.log(json.datetime)
-            //need to somehow shorten the response so it doesn't print the entire return
-            //need to build a prompt for users to choose their timezone, then a new function will switch the timezones with interpolation
+            console.log('here')
 
-            let jsonString = json.datetime
-            time = console.log(new Date(jsonString).toLocaleString('en-US', { hour12: false }))
+            // let jsonString = json.datetime
+            // time = console.log(new Date(jsonString).toLocaleString({ hour12: false }))
+            console.log('here')
 
 
             //below currently prints JUST the second json, not both. It also prints the long date, not the hour
-            document.getElementById('timeDisplay').innerText = new Date(jsonString).toLocaleString('en-US', { hour12: false })
+            document.getElementById('timeDisplay').innerText = (json.datetime).toLocaleString('en-US', { hour12: false })
+            var d = json.datetime.toString()
+            // var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+            // d.getHours() + ":" + d.getMinutes();
+            console.log(d)
+            var dt = json.datetime
+            console.log(new Date(json.unixtime * 1000).toLocaleTimeString('en-US'))
+            // console.log(dt.toU ().split`T`[0])
 
 
         })
 }
 
+// ('dropdown-item').addEventListener("click", function () {
+    
+// })
+
+var est = document.getElementById('inputEST')
+
+// inputEST.onclick () => {
+//     var cityEST = "America/New_York"
+//     timezone(cityEST)
+
+// }
+
+// inputPST.onclick () {
+//     var cityPST = "America/Los_Angeles"
+//     timezone(cityPST)
+// }
+
 estFunction = (city) => {
-    timezone("America/New_York")
-    console.log(timezone("America/New_York"))
+
+
+    // var timezoneInput = document.getElementById("input").value
+    // timezone(timezoneInput);
+
+    // var e = document.getElementById("dropdown-menu");
+    // var value = e.value;
+    // console.log(value)
+    var cityEST = "America/New_York"
+    timezone(cityEST)
+    // console.log(timezone("America/New_York"))
     
 }
 
-cstFunction = (city) => {
-    timezone("America/New_York")
-    console.log(timezone("America/New_York"))
+// cstFunction = (city) => {
+//     timezone("America/New_York")
+//     console.log(timezone("America/New_York"))
     
-}
+// }
 
 pstFunction = (city) => {
-    timezone("America/Los_Angeles")
+    var cityPST = "America/Los_Angeles"
+    timezone(cityPST)
     
 }
 
 jpFunction = (city) => {
-    timezone("Asia/Tokyo")    
+    timezone("Asia/Tokyo") 
+    return city;   
 }
 
-eurFunction = (city) => {
-    timezone("America/New_York")
-    console.log(timezone("America/New_York"))
+// eurFunction = (city) => {
+//     timezone("America/New_York")
+//     console.log(timezone("America/New_York"))
     
-}
-estFunction();
+// }
+// estFunction();
+pstFunction();
+
