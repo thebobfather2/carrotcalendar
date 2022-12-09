@@ -27,13 +27,20 @@ h1 {
 }
 
 header {
-    height: 20vh;
+    height: 25vh;
+    box-shadow: none;
+    border-width: 2px;
 }
 
 h1,
 footer p {
     font-weight: 900;
     color: var(--light-shades);
+}
+
+.dropdown::before {
+    content:"";
+
 }
 
 h1,
@@ -53,10 +60,6 @@ h3 {
     color: var(--light-shades);
 }
 
-#main {
-    height: 95vh;
-}
-
 #calendar {
     margin: 10px;
     flex: 0 0 80%;
@@ -71,6 +74,9 @@ aside {
     box-shadow: 0 8px 12px 8px var(--dark-accent);
 }
 
+li {
+    list-style: none;
+}
 
 #calendar-header,
 aside p {
