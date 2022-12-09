@@ -48,7 +48,7 @@
       </li>
       <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
     </div>
-      <!--Timezone bootstrap widget-->
+    <!--Timezone bootstrap widget-->
 
   </header>
 
@@ -67,6 +67,7 @@
         <input type="time" class="form-control time-input" id="time">
         <label for="time">Time for the event</label>
       </div> -->
+
       <div class="form-floating">
         <input type="text" class="form-control time-input" id="text">
         <label for="text">Event Details</label>
@@ -83,6 +84,14 @@
   <main id="main" class="d-flex justify-content-start align-content-stretch flex-nowrap">
     <div id="calendar" class="card my-3 rounded flex-col"></div>
     <aside id="sidebar" class="bg-light rounded flex-col position-relative">
+      <!-- Current Weather Forecast -->
+      <div class="currentWeather">
+        <div>
+          <h2 id="city">New York</h2>
+          <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
+        </div>
+        <p class="pt-1 pl-2">Temperature: <span id="temperature"></span> &deg;</p>
+      </div>
       <p class="fs-5">Today's Events</p>
       <button id="event" type="button"
         class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
