@@ -17,6 +17,7 @@
   <!-- Our CSS file -->
   <link rel="stylesheet" href="./Assets/css/style.css" />
   <title> Carrot - Event Calendar </title>
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="./Assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./Assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./Assets/favicon/favicon-16x16.png">
@@ -26,70 +27,67 @@
 <body>
 
   <header class="pb-3 mb-4 position-relative">
-
-
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <img src="assets/images/carrot.png" alt="Logo" width="230" height="200" class="me-2" viewBox="0 0 118 94">
       <h1 class="display-3 mt-5">Carrot</h1>
     </a>
 
-    <div class="timezone position-absolute top-0 end-0 mt-5 me-5" id="timezone">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Timezone
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#" onclick="estFunction()">EST</a></li>
-          <li><a class="dropdown-item" href="#">CST</a></li>
-          <li><a class="dropdown-item" href="#">PST</a></li>
-          <li><a class="dropdown-item" href="#">JAPAN</a></li>
-          <li><a class="dropdown-item" href="#">EUR</a></li>
-        </ul>
-      </li>
-      <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
-    </div>
-      <!--Timezone bootstrap widget-->
 
+    <nav class="navbar navbar-expand-lg position-absolute top-0 end-0 me-3">
+      <div class="container-fluid">
+        <a class="navbar-brand custom" href="index.html">Home <span class="icon">&#128048</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link custom" href="https://www.bobbyrabbits.com/" target="_blank">Bobby Rabbits</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle custom" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Timezone
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick="estFunction()">EST</a></li>
+                <li><a class="dropdown-item" href="#">CST</a></li>
+                <li><a class="dropdown-item" href="#">PST</a></li>
+                <li><a class="dropdown-item" href="#">JAPAN</a></li>
+                <li><a class="dropdown-item" href="#">EUR</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" aria-current="page" href="#" onclick="login()">Join us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
   </header>
 
-  <div class="time-widget rounded mx-auto">
-    <div class="time-form">
-      <div class="form-floating">
-        <input type="date" class="form-control time-input" id="date">
-        <label for="date">Date of the event</label>
-      </div>
-      <div class="form-floating">
-        <input type="time" class="form-control time-input" id="time">
-        <label for="time">Time for the event</label>
-      </div>
-      <!-- TODO: TIMEZONE -->
-      <!-- <div class="form-floating">
-        <input type="time" class="form-control time-input" id="time">
-        <label for="time">Time for the event</label>
-      </div> -->
-      <div class="form-floating">
-        <input type="text" class="form-control time-input" id="text">
-        <label for="text">Event Details</label>
-      </div>
-      <div class="input-group-append">
-        <button id="submit" class="btn btn-outline-secondary" type="button" onclick="storeEvent()">Submit
-          &#129365</button>
-        <button id="back" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
-          &#128007</button>
-      </div>
-    </div>
-  </div>
+  <main class="d-flex justify-content-start align-content-stretch flex-nowrap">
 
-  <main id="main" class="d-flex justify-content-start align-content-stretch flex-nowrap">
     <div id="calendar" class="card my-3 rounded flex-col"></div>
+
     <aside id="sidebar" class="bg-light rounded flex-col position-relative">
-      <p class="fs-5">Today's Events</p>
+      <div id="user-area">
+      </div>
+      <hr>
+      <div id="todays-events">
+        <p class="fs-5 p-events">Today's Events</p>
+      </div>
       <button id="event" type="button"
         class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
         data-bs-target="#exampleModal">
         Enter an Event!
       </button>
     </aside>
+
+
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -103,6 +101,50 @@
         </div>
       </div>
     </div>
+
+    <div class="time-widget rounded mx-auto">
+      <div class="time-form">
+        <div class="form-floating">
+          <input type="date" class="form-control time-input" id="date">
+          <label for="date">Date of the event</label>
+        </div>
+        <div class="form-floating">
+          <input type="time" class="form-control time-input" id="time">
+          <label for="time">Time for the event</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control time-input" id="text">
+          <label for="text">Event Details</label>
+        </div>
+        <div class="input-group-append">
+          <button id="submit" class="btn btn-outline-secondary" type="button" onclick="storeEvent()">Submit
+            &#129365</button>
+          <button id="back" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
+            &#128007</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="login-widget rounded mx-auto">
+      <div class="login-form">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="username">
+          <label for="username">Username</label>
+        </div>
+        <div class="form-floating">
+          <input type="city" class="form-control" id="city">
+          <label for="city">City</label>
+        </div>
+        <div class="input-group-append">
+          <button id="submit" class="btn btn-outline-secondary" type="button" onclick="storeUserInfo()">Submit
+            &#129365</button>
+          <button id="back" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
+            &#128007</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer>

@@ -52,7 +52,7 @@ $(function () {
 
     // Creates the calendar body table - calendar grid.
     var tableEl = $("<table>");
-    tableEl.addClass("table table-striped-columns");
+    tableEl.addClass("table");
 
     // Creates the table header - week days.
     var tableHead = $("<thead>");
@@ -88,6 +88,8 @@ $(function () {
     calendar.append(calendarBody); // Appends the calendar body to the calendar container.
 
     renderEvents();
+    renderUserName();
+
 })
 
 // Function to display the storage whenever the user loads the page.
@@ -111,7 +113,6 @@ function renderEvents() {
                 $(".time-widget").css("display", "block");
                 $("#calendar").css("display", "none");
                 $("#sidebar").css("display", "none");
-                $("#main").css("height", "10vh");
             }
         });
     })
@@ -143,14 +144,11 @@ function renderWeek1(data) {
         var day = $("<td>");
         day.attr('id', `${date}`);
         day.addClass('td-date');
-        // TODO: Add function to check the week day
-        // var valueId = parseInt(`${date}`); // ParseInt converts a string to an integer.
-        // The dayId that will be displayed needs to start at 1, but the date value is 4 (Thursday).
         var valueId = parseInt(day.attr('id'));
-        var dayId = valueId - 3;
-        console.log(dayId);
-        // Since December starts on a Thursday, the first 3 containers must be empty.
-        if (valueId < 4) {
+        var dayId = valueId - 4;
+
+        // Since December starts on a Thursday, the first 4 containers must be empty.
+        if (valueId < 5) {
             day.attr('id', '0');
             day.text("");
         }
@@ -169,21 +167,25 @@ function renderWeek1(data) {
             textareaEl.addClass("textarea");
 
             try {
-                var dateObj = data[fullDateId]
+                console.log(data[fullDateId]);
+                var dateObj = data[fullDateId];
                 for (key in dateObj) {
                     var eventInput = dateObj[key].events;
-                    textareaEl.text(eventInput);
-                }
-                if (fullDateId === today) {
-                    var pTag = $('<p>');
-                    pTag.addClass('fs-6');
                     var timeInput = dateObj[key].time;
-                    pTag.tex(timeInput + ":" + eventInput);
-                    $('#sidebar').append(pTag);
+                    textareaEl.text(eventInput);
+
+                    var todayDate = dayjs().format('D');
+
+                    if (dayId === todayDate) {
+                        var pTag = $('<p>');
+                        pTag.addClass('fs-6');
+                        pTag.text(timeInput + ': ' + eventInput);
+                        $('#todays-events').append(pTag);
+                    }
                 }
             }
             catch (err) {
-                console.log(err);
+                console.log(err)
             }
 
             // Creates button to store the user's input.
@@ -229,17 +231,15 @@ function renderWeek2(data) {
                 textareaEl.text(eventInput);
 
                 var dayId = (day.attr('id'));
-            var todayDate = dayjs().format('D');
+                var todayDate = dayjs().format('D');
 
-            if (dayId === todayDate) {
-                var pTag = $('<p>');
-                pTag.addClass('fs-6');
-                pTag.text(timeInput + ':' + eventInput);
-                $('#sidebar').append(pTag);
+                if (dayId === todayDate) {
+                    var pTag = $('<p>');
+                    pTag.addClass('fs-6');
+                    pTag.text(timeInput + ': ' + eventInput);
+                    $('#todays-events').append(pTag);
+                }
             }
-            }
-
-            
         }
         catch (err) {
             console.log(err)
@@ -274,10 +274,21 @@ function renderWeek3(data) {
 
         try {
             console.log(data[fullDateId]);
-            var dateObj = data[fullDateId]
+            var dateObj = data[fullDateId];
             for (key in dateObj) {
                 var eventInput = dateObj[key].events;
+                var timeInput = dateObj[key].time;
                 textareaEl.text(eventInput);
+
+                var dayId = (day.attr('id'));
+                var todayDate = dayjs().format('D');
+
+                if (dayId === todayDate) {
+                    var pTag = $('<p>');
+                    pTag.addClass('fs-6');
+                    pTag.text(timeInput + ': ' + eventInput);
+                    $('#todays-events').append(pTag);
+                }
             }
         }
         catch (err) {
@@ -312,10 +323,21 @@ function renderWeek4(data) {
 
         try {
             console.log(data[fullDateId]);
-            var dateObj = data[fullDateId]
+            var dateObj = data[fullDateId];
             for (key in dateObj) {
                 var eventInput = dateObj[key].events;
+                var timeInput = dateObj[key].time;
                 textareaEl.text(eventInput);
+
+                var dayId = (day.attr('id'));
+                var todayDate = dayjs().format('D');
+
+                if (dayId === todayDate) {
+                    var pTag = $('<p>');
+                    pTag.addClass('fs-6');
+                    pTag.text(timeInput + ': ' + eventInput);
+                    $('#todays-events').append(pTag);
+                }
             }
         }
         catch (err) {
@@ -353,10 +375,21 @@ function renderWeek5(data) {
 
             try {
                 console.log(data[fullDateId]);
-                var dateObj = data[fullDateId]
+                var dateObj = data[fullDateId];
                 for (key in dateObj) {
                     var eventInput = dateObj[key].events;
+                    var timeInput = dateObj[key].time;
                     textareaEl.text(eventInput);
+
+                    var dayId = (day.attr('id'));
+                    var todayDate = dayjs().format('D');
+
+                    if (dayId === todayDate) {
+                        var pTag = $('<p>');
+                        pTag.addClass('fs-6');
+                        pTag.text(timeInput + ': ' + eventInput);
+                        $('#todays-events').append(pTag);
+                    }
                 }
             }
             catch (err) {
@@ -375,3 +408,42 @@ function renderWeek5(data) {
     }
 };
 
+function login() {
+    $(".login-widget").css("display", "block");
+    $("#calendar").css("display", "none");
+    $("#sidebar").css("display", "none");
+}
+
+// If there is no saved username, then renders an empty array.
+var userStorage = JSON.parse(localStorage.getItem("username")) || [];
+
+function storeUserInfo() {
+    var userData = {
+        username: $("#username").val(),
+        city: $("#city").val()
+    }
+    // Saves the data in the highscore array.
+    userStorage.push(userData);
+
+    // Need to convert the object to a string before storing it, or it'll return [object, object].
+    localStorage.setItem("username", JSON.stringify(userStorage));
+
+    renderUserName();
+}
+
+function renderUserName() {
+    var welcomeTag = $("<p>");
+    welcomeTag.attr('id', 'hi');
+    welcomeTag.html("Hi &#128007 ");
+    $("#user-area").append(welcomeTag);
+
+    var userId = $("<p>");
+    userId.attr('id', 'user');
+    userId.text(userStorage[0].username);
+    $("#user-area").append(userId);
+
+
+    var pTagCity = $("<p>");
+    pTagCity.text("From " + userStorage[0].city)
+    $("#user-area").append(pTagCity);
+}
