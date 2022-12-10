@@ -32,7 +32,6 @@
       <h1 class="display-3 mt-5">Carrot</h1>
     </a>
 
-
     <nav class="navbar navbar-expand-lg position-absolute top-0 end-0 me-3">
       <div class="container-fluid">
         <a class="navbar-brand custom" href="index.html">Home <span class="icon">&#128048</span></a>
@@ -68,17 +67,29 @@
     <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
   </header>
 
-  <main class="d-flex justify-content-start align-content-stretch flex-nowrap">
 
+  <main class="d-flex justify-content-start align-content-stretch flex-nowrap">
     <div id="calendar" class="card my-3 rounded flex-col"></div>
 
     <aside id="sidebar" class="bg-light rounded flex-col position-relative">
+
       <div id="user-area">
       </div>
       <hr>
       <div id="todays-events">
         <p class="fs-5 p-events">Today's Events</p>
       </div>
+
+      <!-- Current Weather Forecast -->
+      <div class="currentWeather">
+        <div>
+          <h2 id="city">New York</h2>
+          <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
+        </div>
+        <p class="pt-1 pl-2">Temperature: <span id="temperature"></span> &deg;</p>
+      </div>
+      <p class="fs-5">Today's Events</p>
+
       <button id="event" type="button"
         class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
         data-bs-target="#exampleModal">
