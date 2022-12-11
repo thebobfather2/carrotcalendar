@@ -29,7 +29,7 @@
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <img src="Assets/images/carrot.png" alt="Logo" width="230" height="200" class="me-2" viewBox="0 0 118 94">
       <h1 class="display-3 mt-5">Carrot</h1>
-      <h2 class="fs-5 fw-lighter position-absolute" id="timeDisplay"></h2>
+      <h2 class="timeDisplay" id="timeDisplay"></h2>
     </a>
 
     <nav class="navbar navbar-expand-lg position-absolute top-0 end-0 me-3">
@@ -51,11 +51,11 @@
               </a>
               <ul class="dropdown-menu">
           <!--should i put the ids as the text input?-->
-          <li><a class="dropdown-item" id="inputEST" href="#" onclick="estFunction()">EST</a></li>
-          <li><a class="dropdown-item" id="inputCST" href="#" onclick="cstFunction()">CST</a></li>
-          <li><a class="dropdown-item" id="inputPST" href="#" onclick="pstFunction()">PST</a></li>
-          <li><a class="dropdown-item" id="inputJP" href="#" onclick="jpFunction()">JAPAN</a></li>
-          <li><a class="dropdown-item" id="inputEUR" href="#" onclick="eurFunction()">EUR</a></li>
+          <li><a class="dropdown-item" id="inputEST" href="#" onclick="renderest()">EST</a></li>
+          <li><a class="dropdown-item" id="inputCST" href="#" onclick="rendercst()">CST</a></li>
+          <li><a class="dropdown-item" id="inputPST" href="#" onclick="renderpst()">PST</a></li>
+          <li><a class="dropdown-item" id="inputJP" href="#" onclick="renderjp()">JAPAN</a></li>
+          <li><a class="dropdown-item" id="inputEUR" href="#" onclick="rendereu()">EUR</a></li>
               </ul>
             </li>
             <li class="nav-item">
