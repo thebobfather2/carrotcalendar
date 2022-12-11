@@ -50,12 +50,12 @@
                 Timezone
               </a>
               <ul class="dropdown-menu">
-          <!--should i put the ids as the text input?-->
-          <li><a class="dropdown-item" id="inputEST" href="#" onclick="renderest()">EST</a></li>
-          <li><a class="dropdown-item" id="inputCST" href="#" onclick="rendercst()">CST</a></li>
-          <li><a class="dropdown-item" id="inputPST" href="#" onclick="renderpst()">PST</a></li>
-          <li><a class="dropdown-item" id="inputJP" href="#" onclick="renderjp()">JAPAN</a></li>
-          <li><a class="dropdown-item" id="inputEUR" href="#" onclick="rendereu()">EUR</a></li>
+                <!--should i put the ids as the text input?-->
+                <li><a class="dropdown-item" id="inputEST" href="#" onclick="renderest()">EST</a></li>
+                <li><a class="dropdown-item" id="inputCST" href="#" onclick="rendercst()">CST</a></li>
+                <li><a class="dropdown-item" id="inputPST" href="#" onclick="renderpst()">PST</a></li>
+                <li><a class="dropdown-item" id="inputJP" href="#" onclick="renderjp()">JAPAN</a></li>
+                <li><a class="dropdown-item" id="inputEUR" href="#" onclick="rendereu()">EUR</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -77,14 +77,14 @@
       <div id="user-area">
       </div>
       <hr>
-            <!-- Current Weather Forecast -->
-            <div class="currentWeather">
-              <div class="weatherbox">
-                <!-- <h2 id="city">New York</h2> -->
-                <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
-              </div>
-              <p class="pt-1 pl-2">Local Temperature: <span id="temperature"></span> &deg;</p>
-            </div>
+      <!-- Current Weather Forecast -->
+      <div class="currentWeather">
+        <div class="weatherbox">
+          <!-- <h2 id="city">New York</h2> -->
+          <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
+        </div>
+        <p class="pt-1 pl-2">Local Temperature: <span id="temperature"></span> &deg;</p>
+      </div>
       <div id="todays-events">
         <p class="fs-5 p-events">Today's Events</p>
       </div>
@@ -92,24 +92,24 @@
       <!-- Current Weather Forecast -->
       <div class="currentWeather">
         <div>
-          <h2 id="city">New York</h2>
+          <!-- <h2 id="city">New York</h2> -->
           <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
         </div>
         <p class="pt-1 pl-2">Temperature: <span id="temperature"></span> &deg;</p>
         <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
         <p class="pl-2">Wind Speed: <span id="wind"></span> MPH</p>
 
-      <div>
-        <p class="fs-5 p-events">What did the rabbit give his girlfriend?</p>
-        <p>A 14 carat ring!</p>
-      </div>
+        <div>
+          <p class="fs-5 p-events">What did the rabbit give his girlfriend?</p>
+          <p>A 14 carat ring!</p>
+        </div>
 
 
-      <button id="event" type="button"
-        class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
-        Enter an Event!
-      </button>
+        <button id="event" type="button"
+          class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+          Enter an Event!
+        </button>
     </aside>
 
 
@@ -164,7 +164,7 @@
         </div>
         <div class="input-group-append">
           <button id="submit" class="btn btn-outline-secondary" type="button"
-            onclick="weatherData();storeUserInfo();">Submit
+            onclick="weatherData(), storeUserInfo()">Submit
             &#129365</button>
           <button id="back" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
             &#128007</button>
