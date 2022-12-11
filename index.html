@@ -89,6 +89,16 @@
         <p class="fs-5 p-events">Today's Events</p>
       </div>
 
+      <!-- Current Weather Forecast -->
+      <div class="currentWeather">
+        <div>
+          <h2 id="city">New York</h2>
+          <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
+        </div>
+        <p class="pt-1 pl-2">Temperature: <span id="temperature"></span> &deg;</p>
+        <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
+        <p class="pl-2">Wind Speed: <span id="wind"></span> MPH</p>
+
       <div>
         <p class="fs-5 p-events">What did the rabbit give his girlfriend?</p>
         <p>A 14 carat ring!</p>
@@ -149,11 +159,12 @@
           <label for="username">Username</label>
         </div>
         <div class="form-floating">
-          <input type="city" class="form-control" id="city">
+          <input type="text" class="form-control" id="scity" value="Atlanta">
           <label for="city">City</label>
         </div>
         <div class="input-group-append">
-          <button id="submit" class="btn btn-outline-secondary" type="button" onclick="storeUserInfo()">Submit
+          <button id="submit" class="btn btn-outline-secondary" type="button"
+            onclick="weatherData();storeUserInfo();">Submit
             &#129365</button>
           <button id="back" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
             &#128007</button>
