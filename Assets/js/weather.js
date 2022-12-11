@@ -4,7 +4,7 @@ let scity = document.querySelector("#scity").value;
 var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + scity + "&appid=" + apiKey + "&units=metric"
 
 function weatherData() {
-    //let weather =
+    let weather =
         fetch(weatherAPI)
             .then((response) => {
                 if (!response.ok) {
@@ -17,12 +17,14 @@ function weatherData() {
             }
 
             function displayWeather(data) {
-                document.querySelector("#city").innerHTML = data.name;
+                document.querySelector("#scity").innerHTML = data.name;
                 document.querySelector("#temperature").innerHTML = data.main.temp;
                 document.querySelector("#humidity").innerHTML = data.main.humidity;
                 document.querySelector("#wind").innerHTML = data.wind.speed;
                 console.log(data);
             }
+
+weatherData()
     
 
 //             .then((data) => this.displayWeather(data))
