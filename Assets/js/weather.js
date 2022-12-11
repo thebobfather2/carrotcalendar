@@ -1,16 +1,32 @@
 //OpenWeather API
-let apiKey = '8767292ff2d49f8b711c0679b1936ed2';
-console.log(apiKey);
+function weatherData() {
+    let apiKey = "3ac6363dc78f88939a4f094f585898ad";
+    let scity = document.querySelector("#scity").value;
+
+    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + scity + "&appid=" + apiKey + "&units=metric"
 
 
-// Selectors for HTML elements to display weather information
-const cityEl = $('h2#city');
-const weatherIconEl = $('img#weather-icon');
+    let weather =
+        fetch(weatherAPI)
+            .then((response) => {
+                if (!response.ok) {
+                    alert("No weather found.")
+                    throw new Error("No weather found.");
+                }
+                return response.json();
+            })
 
-// Display current weather in DOM elements
-cityEl.text(response.name);
-let formattedDate = moment.unix(response.dt).format('L');
-dateEl.text(formattedDate);
-let weatherIcon = response.weather[0].icon;
-weatherIconEl.attr('src', `http://openweathermap.org/img/wn/${weatherIcon}.png`).attr('alt', response.weather[0].description);
-temperatureEl.html(((response.main.temp - 273.15) * 1.8 + 32).toFixed(1));
+            .then((data) => displayWeather(data));
+
+
+
+    function displayWeather(data) {
+        document.querySelector("#city").textContent = data.name;
+        document.querySelector("#temperature").textContent = data.main.temp;
+        document.querySelector("#humidity").textContent = data.main.humidity;
+        document.querySelector("#wind").textContent = data.wind.speed;
+        console.log(data);
+    }
+}
+weatherData();
+
