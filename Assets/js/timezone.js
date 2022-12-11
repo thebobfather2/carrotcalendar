@@ -1,9 +1,6 @@
 
-// const timezoneDiv = document.getElementById('#timezone')
-// const country = document.getElementById('country')
-let city = "America/New_York"
 
-
+// import localizedFormat from 'dayjs/plugin/localizedFormat';
 //fetching the timezone api
 const timezone = (city) => {
     var timezoneApi = "http://worldtimeapi.org/api/timezone/" + city 
@@ -19,11 +16,11 @@ const timezone = (city) => {
             //need to build a prompt for users to choose their timezone, then a new function will switch the timezones with interpolation
 
             let jsonString = json.datetime
-            time = console.log(new Date(jsonString).toLocaleString('en-US', { hour12: false }))
+            time = console.log(new Date(jsonString).toLocaleString({ hour12: true }))
 
 
             //below currently prints JUST the second json, not both. It also prints the long date, not the hour
-            document.getElementById('timeDisplay').innerText = new Date(jsonString).toLocaleString('en-US', { hour12: false })
+            document.getElementById('timeDisplay').innerText = new Date(jsonString).toLocaleString({ hour12: true })
 
 
         })
@@ -41,18 +38,18 @@ cstFunction = (city) => {
     
 }
 
-pstFunction = (city) => {
-    timezone("America/Los_Angeles")
+// pstFunction = (city) => {
+//     timezone("America/Los_Angeles")
     
-}
+// }
 
-jpFunction = (city) => {
-    timezone("Asia/Tokyo")    
-}
+// jpFunction = (city) => {
+//     timezone("Asia/Tokyo")    
+// }
 
-eurFunction = (city) => {
-    timezone("America/New_York")
-    console.log(timezone("America/New_York"))
+// eurFunction = (city) => {
+//     timezone("America/New_York")
+//     console.log(timezone("America/New_York"))
     
-}
+// }
 estFunction();
