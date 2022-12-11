@@ -3,9 +3,17 @@
 ## Description
 Keeping up with Bobby Rabbits' events has never been easier!
 
-Our new calendar is the perfect tool for connecting community memebers from around the world, no matter where they're located or what language they speak. With **Carrot**, you can change the calendar time zone to know what time an event will take place for your friends. You can also easily switch between languages to view events in your native tongue.
+Have you ever tried to organize a poker night or online gaming event with friends across muttiple time zones? It's a HUGE pain to track down everyone's time zones, do the math, and spread the word!!! Our new calendar is the perfect tool for connecting community memebers from around the world, no matter where they're located. With **Carrot** you can easily switch the time zone to check what time an event will take place for your friends in order to better coordinate online meetups. Additionally, when a user adds an event to the Carrot Calendar, the data is stored on the cloud! This allows multiple communities to install the app on their sites too so that events can be more easily coordinated with partnering projects! Setting up a Rumble Royale, a Twitter Space, or Poker Night with friends across the globe has never been easier!
+
+## Deployed Link
+
+https://thebobfather2.github.io/carrotcalendar/
 
 ## Installation
+
+<ol>
+  <li>git clone https://github.com/thebobfather2/carrotcalendar.git</li>
+</ol>
 
 ## Mock-Up
 
@@ -47,11 +55,6 @@ The following gif shows the web application's appearance and functionality:
 ## License
 
 Please refer to the [LICENSE](https://choosealicense.com/licenses/mit/) in the repo.
-
-## Upcoming Meetings
-11/29/22 we have a meeting at 12:00 pm eastern to set up our branches and come up with a plan!
-11/30/22 we have a meeting at 6:30 pm eastern to continue dicussing issues and Google Calendar API
-12/1/22 we have a meeting at 6:30 pm eastern to review progress and implement first round of API's and basic CSS
 
 ## User Story
 

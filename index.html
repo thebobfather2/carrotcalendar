@@ -25,11 +25,11 @@
 </head>
 
 <body>
-
   <header class="pb-3 mb-4 position-relative">
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <img src="Assets/images/carrot.png" alt="Logo" width="230" height="200" class="me-2" viewBox="0 0 118 94">
       <h1 class="display-3 mt-5">Carrot</h1>
+      <h2 class="timeDisplay" id="timeDisplay"></h2>
     </a>
 
     <nav class="navbar navbar-expand-lg position-absolute top-0 end-0 me-3">
@@ -50,11 +50,12 @@
                 Timezone
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" onclick="estFunction()">EST</a></li>
-                <li><a class="dropdown-item" href="#">CST</a></li>
-                <li><a class="dropdown-item" href="#">PST</a></li>
-                <li><a class="dropdown-item" href="#">JAPAN</a></li>
-                <li><a class="dropdown-item" href="#">EUR</a></li>
+          <!--should i put the ids as the text input?-->
+          <li><a class="dropdown-item" id="inputEST" href="#" onclick="renderest()">EST</a></li>
+          <li><a class="dropdown-item" id="inputCST" href="#" onclick="rendercst()">CST</a></li>
+          <li><a class="dropdown-item" id="inputPST" href="#" onclick="renderpst()">PST</a></li>
+          <li><a class="dropdown-item" id="inputJP" href="#" onclick="renderjp()">JAPAN</a></li>
+          <li><a class="dropdown-item" id="inputEUR" href="#" onclick="rendereu()">EUR</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -64,7 +65,7 @@
         </div>
       </div>
     </nav>
-    <h2 class="fs-5 fw-lighter" id="timeDisplay"></h2>
+
   </header>
 
 
@@ -76,6 +77,14 @@
       <div id="user-area">
       </div>
       <hr>
+            <!-- Current Weather Forecast -->
+            <div class="currentWeather">
+              <div class="weatherbox">
+                <!-- <h2 id="city">New York</h2> -->
+                <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
+              </div>
+              <p class="pt-1 pl-2">Local Temperature: <span id="temperature"></span> &deg;</p>
+            </div>
       <div id="todays-events">
         <p class="fs-5 p-events">Today's Events</p>
       </div>
@@ -89,8 +98,12 @@
         <p class="pt-1 pl-2">Temperature: <span id="temperature"></span> &deg;</p>
         <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
         <p class="pl-2">Wind Speed: <span id="wind"></span> MPH</p>
+
+      <div>
+        <p class="fs-5 p-events">What did the rabbit give his girlfriend?</p>
+        <p>A 14 carat ring!</p>
       </div>
-      <p class="fs-5">Today's Events</p>
+
 
       <button id="event" type="button"
         class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
@@ -165,6 +178,7 @@
     <p> Made with &#129365 by Rabbits </p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <!--Firebase-->
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>

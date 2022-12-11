@@ -272,3 +272,12 @@ footer p {
     color: var(--dark-shades);
 
 }
+
+.timeDisplay {
+    position: absolute;
+    top: 70px;
+    right: -40px;
+    width: 500px;
+    font-size: 1.8vw;
+    font-weight: lighter;
+}
