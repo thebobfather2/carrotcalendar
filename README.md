@@ -6,19 +6,35 @@ Keeping up with Bobby Rabbits' events has never been easier!
 Have you ever tried to organize a poker night or online gaming event with friends across muttiple time zones? It's a HUGE pain to track down everyone's time zones, do the math, and spread the word!!! Our new calendar is the perfect tool for connecting community members from around the world, no matter where they're located. 
 ## Deployed Link
 
-https://thebobfather2.github.io/carrotcalendar/
+<img src="./assets/favicon/apple-touch-icon.png" alt="logo" width="80px" height="80px">
+
+<br>
+
+[Carrot](https://thebobfather2.github.io/carrotcalendar/)
 
 ## Installation
 
-<ol>
-  <li>git clone https://github.com/thebobfather2/carrotcalendar.git</li>
-</ol>
+Click "<> code" - the green button. After clicking, in the local tab, copy the SSH key. Open the terminal in your Macbook or [git bash](https://git-scm.com/downloads), if you have Windows, and type:
+
+```bash
+git clone [paste ssh key]
+```
+
+OR
+
+```bash
+  git clone https://github.com/thebobfather2/carrotcalendar.git
+```
+
+I would recommend downloading [Visual Studio Code](https://code.visualstudio.com/download) to edit the code locally. 
+
+Detailed information about [cloning a repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 ## Mock-Up
 
 The following gif shows the web application's appearance and functionality:
 
-![App Video](./assets/images/demo.mp4)
+![App Gif](./assets/images/demo.gif)
 
 ## Usage/Examples
 
