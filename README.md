@@ -34,7 +34,7 @@ Detailed information about [cloning a repository.](https://docs.github.com/en/re
 
 The following gif shows the web application's appearance and functionality:
 
-![App Gif](./assets/images/demo.gif)
+![App Gif](./Assets/images/demo.gif)
 
 ## Usage/Examples
 
