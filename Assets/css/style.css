@@ -43,6 +43,9 @@ footer p {
 }
 
 h2 {
+    position: absolute;
+    top: 1;
+    right: 95px;
     margin: 10px 0px 50px 1290px;
     font-size: 28px;
     font-weight: lighter;
