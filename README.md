@@ -43,8 +43,11 @@ With **Carrot** you can easily switch the time zone to check what time an event 
 ## Authors
 
   🐇 [Bryan Pike](https://github.com/thebobfather2)
+
   🐇 [Larissa Guilherme](https://github.com/larigens)
+
   🐇 [Anastasia Markova](https://github.com/mriya20)
+  
   🐇 [Sarah Jacobs](https://github.com/sarahgjacobs)
 
 ## Acknowledgements
