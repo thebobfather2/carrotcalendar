@@ -26,11 +26,11 @@
 
 <body>
   <header class="pb-3 mb-4 position-relative">
-    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-      <img src="Assets/images/carrot.png" alt="Logo" width="230" height="200" class="me-2" viewBox="0 0 118 94">
+    <div class="d-flex align-items-center">
+      <img src="./Assets/images/carrot.png" alt="Logo" width="230" height="200" class="me-2">
       <h1 class="display-3 mt-5">Carrot</h1>
-      <h2 class="timeDisplay" id="timeDisplay"></h2>
-    </a>
+    </div>
+    <h2 class="time-display" id="timezone-display"></h2>
 
     <nav class="navbar navbar-expand-lg position-absolute top-0 end-0 me-3">
       <div class="container-fluid">
@@ -50,12 +50,11 @@
                 Timezone
               </a>
               <ul class="dropdown-menu">
-                <!--should i put the ids as the text input?-->
-                <li><a class="dropdown-item" id="inputEST" href="#" onclick="renderest()">EST</a></li>
-                <li><a class="dropdown-item" id="inputCST" href="#" onclick="rendercst()">CST</a></li>
-                <li><a class="dropdown-item" id="inputPST" href="#" onclick="renderpst()">PST</a></li>
-                <li><a class="dropdown-item" id="inputJP" href="#" onclick="renderjp()">JAPAN</a></li>
-                <li><a class="dropdown-item" id="inputEUR" href="#" onclick="rendereu()">EUR</a></li>
+                <li><a class="dropdown-item" id="inputEST" href="#" onclick="renderEST()">EST</a></li>
+                <li><a class="dropdown-item" id="inputCST" href="#" onclick="renderCST()">CST</a></li>
+                <li><a class="dropdown-item" id="inputPST" href="#" onclick="renderPST()">PST</a></li>
+                <li><a class="dropdown-item" id="inputJP" href="#" onclick="renderJP()">JAPAN</a></li>
+                <li><a class="dropdown-item" id="inputEUR" href="#" onclick="renderEU()">EUR</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -65,66 +64,47 @@
         </div>
       </div>
     </nav>
-
   </header>
 
 
   <main class="d-flex justify-content-start align-content-stretch flex-nowrap">
+
+    <!-- Calendar -->
     <div id="calendar" class="card my-3 rounded flex-col"></div>
 
+    <!-- Sidebar -->
     <aside id="sidebar" class="bg-light rounded flex-col position-relative">
 
-      <div id="user-area">
-      </div>
+      <!-- Username and Location -->
+      <div id="user-area"></div>
       <hr>
-      <!-- Current Weather Forecast -->
-      <div class="currentWeather">
-        <div>
-          <!-- <h2 id="city">New York</h2> -->
-          <img id="weather-icon" src="https://openweathermap.org/img/wn/04d.png" />
-        </div>
-        <p class="pt-1 pl-2">Temperature: <span id="temperature"></span> &deg;</p>
-        <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
-        <p class="pl-2">Wind Speed: <span id="wind"></span> MPH</p>
+
+      <!-- Current Weather -->
+      <div id="curr-weather" class="current-weather">
+        <p id="description" class="pt-2 pl-2"></p>
+        <p class="pl-2 pweather">Temperature: <span id="temperature" class="weatherspan"></span></p>
+        <p class="pl-2 pweather">Feels-Like: <span id="feels-like" class="weatherspan"></span></p>
+        <p class="pl-2 pweather">Humidity: <span id="humidity" class="weatherspan"></span></p>
       </div>
 
-      <div id="todays-events">
+      <!-- Today's Events -->
+      <div id="todays-events" class="mt-4 mb-3 border-bottom">
         <p class="fs-5 p-events">Today's Events</p>
       </div>
+      <div>
+        <p class="fs-5">What did the rabbit give his girlfriend?</p>
+        <p>A 14 carat ring!</p>
+      </div>
 
-      <!-- Current Weather Forecast -->
-      <!-- <div class="currentWeather"> -->
-
-
-        <div>
-          <p class="fs-5 p-events">What did the rabbit give his girlfriend?</p>
-          <p>A 14 carat ring!</p>
-        </div>
-
-
-        <button id="event" type="button"
-          class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">
-          Enter an Event!
-        </button>
+      <!-- Open Modal -->
+      <button id="event" type="button"
+        class="btn btn-secondary mb-4 position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal"
+        data-bs-target="#carrot-modal">
+        Enter an Event!
+      </button>
     </aside>
 
-
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title fs-5" id="exampleModalLabel">Hello Rabbit</h3>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Grab a &#129365
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- Enter Events -->
     <div class="time-widget rounded mx-auto">
       <div class="time-form">
         <div class="form-floating">
@@ -148,7 +128,7 @@
       </div>
     </div>
 
-
+    <!-- User Login -->
     <div class="login-widget rounded mx-auto">
       <div class="login-form">
         <div class="form-floating">
@@ -156,20 +136,33 @@
           <label for="username">Username</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="scity" value="Atlanta">
+          <input type="text" class="form-control" id="city">
           <label for="city">City</label>
         </div>
         <div class="input-group-append">
-          <button id="submit" class="btn btn-outline-secondary" type="button"
-            onclick="weatherData(), storeUserInfo()">Submit
+          <button id="submit2" class="btn btn-outline-secondary" type="button" onclick="storeUserInfo()">Submit
             &#129365</button>
-          <button id="back" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
+          <button id="back2" class="btn btn-outline-secondary" type="button" onclick="window.location.reload()">Back
             &#128007</button>
         </div>
       </div>
     </div>
 
   </main>
+
+  <div class="modal fade" id="carrot-modal" tabindex="-1" aria-labelledby="carrot-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="carrot-label">Hello Rabbit</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Grab a &#129365
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <p> Made with &#129365 by Rabbits </p>
@@ -195,8 +188,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Our JavaScript file -->
   <script src="./Assets/js/script.js"></script>
-  <script src="./Assets/js/timezone.js"></script>
-  <script src="./Assets/js/weather.js"></script>
 </body>
 
 </html>

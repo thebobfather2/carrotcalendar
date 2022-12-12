@@ -89,6 +89,7 @@ $(function () {
 
     renderEvents();
     renderUserName();
+    weatherData();
 
 })
 
@@ -418,17 +419,28 @@ function login() {
 var userStorage = JSON.parse(localStorage.getItem("username")) || [];
 
 function storeUserInfo() {
-    var userData = {
-        username: $("#username").val(),
-        city: $("#city").val()
+    var userName = $("#username");
+    var userCity = $("#city");
+    var submitBtn2 = $("#submit2");
+    var backBtn2 = $("#back2");
+
+    if (userName && userCity !== "") { // Conditional statement to ensure that it will only be stored on click if the text, date and time are not empty.
+        submitBtn2.css("display", "none");
+        backBtn2.html('Back &#129365&#128007');
+
+        var userData = {
+            username: $("#username").val(),
+            city: $("#city").val()
+        }
+        // Saves the data in the highscore array.
+        userStorage.push(userData);
+
+        // Need to convert the object to a string before storing it, or it'll return [object, object].
+        localStorage.setItem("username", JSON.stringify(userStorage));
+
+        renderUserName();
+        weatherData();
     }
-    // Saves the data in the highscore array.
-    userStorage.push(userData);
-
-    // Need to convert the object to a string before storing it, or it'll return [object, object].
-    localStorage.setItem("username", JSON.stringify(userStorage));
-
-    renderUserName();
 }
 
 function renderUserName() {
@@ -442,8 +454,94 @@ function renderUserName() {
     userId.text(userStorage[0].username);
     $("#user-area").append(userId);
 
-
     var pTagCity = $("<p>");
-    pTagCity.text("From " + userStorage[0].city)
+    pTagCity.text("From " + userStorage[0].city);
     $("#user-area").append(pTagCity);
+}
+
+// Timezone
+function timezone(timezoneCity) {
+
+    var timezoneApi = "http://worldtimeapi.org/api/timezone/" + timezoneCity;
+
+    fetch(timezoneApi)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            console.log(data);
+            var timezoneData = data.datetime;
+            var timezoneDate = timezoneData.slice(11, 16);
+            var timezoneCode = data.abbreviation;
+            $('#timezone-display').html(timezoneDate + " - " + timezoneCode);
+        }
+        );
+}
+
+function renderEST() {
+    let timezoneCity = "America/New_York";
+    timezone(timezoneCity);
+}
+
+function renderCST() {
+    let timezoneCity = "America/Chicago";
+    timezone(timezoneCity);
+}
+
+function renderPST() {
+    let timezoneCity = "America/Los_Angeles";
+    timezone(timezoneCity);
+}
+
+function renderJP() {
+    let timezoneCity = "Asia/Tokyo";
+    timezone(timezoneCity);
+}
+
+function renderEU() {
+    let timezoneCity = "Europe/London";
+    timezone(timezoneCity);
+}
+
+// Weather
+var apiKey = "1621a5fb00df3e233c5aa1c741011fd3";
+var weatherCity = userStorage[0].city;
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + weatherCity + "&units=imperial&appid=" + apiKey;
+
+function weatherData() {
+    fetch(queryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (weatherData) {
+            console.log(weatherData);
+            renderCurrWeather(weatherData);
+        })
+}
+
+function renderCurrWeather(weatherData) {
+    var weather = weatherData.weather[0];
+    var mainInfo = weatherData.main;
+
+    var weatherIconEl = $("<img>");
+    weatherIconEl.attr('id', 'weather-icon');
+    weatherIconEl.attr('alt', 'weather icon');
+    $("#curr-weather").append(weatherIconEl);
+
+    var icon = weather.icon;
+    var iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
+    var weatherIcon = $('#weather-icon');
+    weatherIcon.attr("src", iconURL);
+
+    var description = $("#description");
+    description.html(weather.main);
+
+    var temperature = $("#temperature");
+    temperature.text(mainInfo.temp + "°F");
+
+    var feelsLike = $("#feels-like");
+    feelsLike.text(mainInfo.feels_like + "°F");
+
+    var humidity = $("#humidity");
+    humidity.text(mainInfo.humidity + "\%");
 }

@@ -7,17 +7,14 @@
     --gradient: linear-gradient(to right, var(--main-brand), var(--light-accent), var(--dark-accent));
 }
 
-.timeDisplay {
-    font-size: 1.8vw;
-    position: absolute;
-    top: 30px;
-    right: 30px;
-}
-
 body {
     animation: gradient 10s ease infinite;
     background-size: 400% 400%;
     background: var(--gradient);
+}
+
+header {
+    height: 28vh;
 }
 
 h1 {
@@ -27,40 +24,34 @@ h1 {
     letter-spacing: 0.4rem;
 }
 
-header {
-    height: 28vh;
-}
-
 h1,
-.custom,
 h2,
+.custom,
 footer p {
     color: var(--light-shades);
-}
-
-h2 {
-    margin: 10px 0 40px 1289px;
-    color: var(--light-shades);
-    text-shadow: 8px 8px 7px var(--dark-shades);
-}
-
-.p-events {
-    color: var(--light-accent);
-    font-weight: 900;
 }
 
 h1,
 .custom,
 #calendar-header,
-aside p,
 h3,
 #week-day,
+aside p,
+.current-weather,
 footer p {
     font-family: 'Eagle Lake', cursive;
 }
 
-h3 {
-    color: var(--dark-accent);
+h2 {
+    margin: 10px 0px 50px 1290px;
+    font-size: 28px;
+    font-weight: lighter;
+    text-shadow: 8px 8px 7px var(--dark-shades);
+    color: var(--light-shades);
+}
+
+.icon {
+    margin-left: 5px;
 }
 
 #calendar {
@@ -74,11 +65,15 @@ aside {
     margin: 17px 0 15px 0;
     text-align: center;
     box-shadow: 0 8px 12px 8px var(--dark-accent);
-
 }
 
-.icon {
-    margin-left: 5px;
+.p-events {
+    color: var(--light-accent);
+    font-weight: 900;
+}
+
+h3 {
+    color: var(--dark-accent);
 }
 
 .custom {
@@ -91,11 +86,9 @@ aside {
     text-shadow: 3px 3px 2px var(--dark-shades);
 }
 
-
 li {
     list-style: none;
 }
-
 
 #calendar-header,
 aside p {
@@ -124,6 +117,8 @@ td p {
 .textarea {
     margin: 2px 6px 6px 6px;
     padding: 10px;
+    font-weight: 700;
+    color: var(--dark-accent);
 }
 
 .textarea,
@@ -142,16 +137,39 @@ td p {
     padding: 5px;
 }
 
-footer {
-    margin-top: 50px;
+.current-weather {
+    text-align: center;
+    height: 34vh;
+    background-color: white;
+    padding-top: 10px;
+    margin: 10px 5px;
+    border-radius: 160px;
+    border-color: rgb(160, 95, 4);
+    border-width: 5px;
+    box-shadow: 0px 4px #00000050;
+    color: var(--dark-shades);
 }
 
-footer p {
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-    letter-spacing: 0.2rem;
-    text-shadow: 2px 2px var(--main-brand);
+#description {
+    text-shadow: 1px 1px var(--dark-accent);
+    font-weight: 700;
+}
+
+.pweather {
+    color: var(--dark-shades);
+}
+
+.weatherspan {
+    color: var(--dark-accent);
+}
+
+.time-widget,
+.login-widget {
+    display: none;
+    background-color: var(--main-brand);
+    width: 450px;
+    box-shadow: 10px 10px #00000040;
+    padding: 100px;
 }
 
 .time-form,
@@ -167,7 +185,8 @@ footer p {
     margin: 5px 0;
 }
 
-#submit {
+#submit,
+#submit2 {
     width: 400px;
     background-color: white;
     margin-top: 50px;
@@ -176,7 +195,8 @@ footer p {
     padding: 10px;
 }
 
-#back {
+#back,
+#back2 {
     outline: none;
     border: none;
     padding: 10px;
@@ -250,34 +270,14 @@ footer p {
     }
 }
 
-.time-widget,
-.login-widget {
-    display: none;
-    background-color: var(--main-brand);
-    width: 450px;
-    box-shadow: 10px 10px #00000040;
-    padding: 100px;
+footer {
+    margin-top: 50px;
 }
 
-.currentWeather {
-    background-color: white;
-    padding: 10px;
-    padding-bottom: 100px;
-    border-radius: 50px;
-    border-bottom: solid;
-    border-color: rgb(160, 95, 4);
-    border-width: 5px;
-    box-shadow: 0px 4px #00000050;
-    font-family: 'Eagle Lake', cursive;
-    color: var(--dark-shades);
-
-}
-
-.timeDisplay {
-    position: absolute;
-    top: 70px;
-    right: -40px;
-    width: 500px;
-    font-size: 1.8vw;
-    font-weight: lighter;
+footer p {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    text-shadow: 2px 2px var(--main-brand);
 }
