@@ -10,8 +10,6 @@ Have you ever tried to organize a poker night or online gaming event with friend
 
 ![Image 12-12-22 at 11 32 PM](https://user-images.githubusercontent.com/107475188/207245962-394975e4-521e-47f6-860e-6f957dce39b0.JPG)
 
-<br>
-
 ## Installation
 
 Click "<> code" - the green button. After clicking, in the local tab, copy the SSH key. Open the terminal in your Macbook or [git bash](https://git-scm.com/downloads), if you have Windows, and type:
