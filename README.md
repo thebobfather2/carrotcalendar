@@ -30,6 +30,16 @@ I would recommend downloading [Visual Studio Code](https://code.visualstudio.com
 
 Detailed information about [cloning a repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
+## Set up firebase realtime database
+
+Set up a firebase realtime database, your config code will replace lines 12-22 in script.js!
+
+link to firebase: https://firebase.google.com/
+
+NOTE: You will need to click Authentication on the left and set up Sign-in providers such as Google - you don't have to use them but for some reason if you don't do this you will get errors when retrieving data.
+
+![Image 12-13-22 at 1 57 AM](https://user-images.githubusercontent.com/107475188/207248205-988910fd-e390-4fcf-b3ce-316d5e57cf6a.JPG)
+
 ## Mock-Up
 
 The following gif shows the web application's appearance and functionality:
