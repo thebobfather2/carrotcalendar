@@ -6,7 +6,9 @@ Keeping up with Bobby Rabbits' events has never been easier!
 Have you ever tried to organize a poker night or online gaming event with friends across muttiple time zones? It's a HUGE pain to track down everyone's time zones, do the math, and spread the word!!! Our new calendar is the perfect tool for connecting community members from around the world, no matter where they're located. 
 ## Deployed Link
 
-<img src="./assets/favicon/apple-touch-icon.png" alt="logo" width="80px" height="80px">
+https://thebobfather2.github.io/carrotcalendar/
+
+![Image 12-12-22 at 11 32 PM](https://user-images.githubusercontent.com/107475188/207245962-394975e4-521e-47f6-860e-6f957dce39b0.JPG)
 
 <br>
 
